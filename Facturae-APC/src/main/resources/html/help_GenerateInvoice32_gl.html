@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Xeraci�n dunha factura en formato "facturae"<BR>(versi�n 3.2) </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruci�ns de uso </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>A presente vent� est� destinada � xeraci�n de borradores e facturas en formato "facturae" (versi�n 3.2). Para iso, m�stranse unha serie de campos; alg�ns deles deben ser cubertos obrigatoriamente polo usuario (os marcados cun asterisco: *) e outros son non-editables (os que te�en un fondo de cor azul) e meramente informativos. A continuaci�n, descr�bense detalladamente como deben encherse os diferentes campos:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Na secci�n "Datos xerais factura" perm�tese introducir datos de car�cter global coma a data de emisi�n, a data e o lugar de operaci�n ou o per�odo de facturaci�n. Ademais, o sistema asignar�, de xeito interno, un identificador �nico ou "N�mero de factura" � factura que se est� a xerar.</P></LI>
+    <LI><P>Na secci�n "Emisor" p�dese seleccionar un emisor xa existente (de entre todos os que previamente se almacenasen na aplicaci�n) ou introducir un novo emisor e gardalo en base de datos.</P>
+     <UL TYPE="a">
+      <LI><P>No primeiro caso, seleccione "Persoa xur�dica" ou "Persoa f�sica" e, a continuaci�n, despregue a pestana situada en "Emisor". Finalmente, prema no usuario desexado.</P></LI>
+      <LI><P>No segundo caso, prema no bot�n "Novo usuario". Deseguido, todos os campos do emisor se far�n editables (fondo de cor branca) para que poida introducir os datos do novo usuario. O �nico campo non editable ser� "Identificador", cuxo valor o asignar� internamente a propia aplicaci�n. Unha vez cubertos todos os campos obrigatorios, prema no bot�n "Gardar": aparecer� unha mensaxe informativa sobre o �xito / fracaso da operaci�n.</P></LI>
+      <LI><P>Tam�n � posible borrar un emisor xa existente, sempre que non fose utilizado previamente nalgunha outra factura ou borrador: abonda con seleccionalo e premer no bot�n "Borrar usuario". </UL>
+    </LI>
+    <LI><P>A secci�n "Receptor" � completamente an�loga � anterior. Neste caso, a ficha FACe ser&aacute; activado, se escollido para ter un destinatario deste tipo.</P></LI>
+    <LI><P>Na secci�n "Detalle factura" introd�cese o concepto ou conceptos que se van facturar (t�boa con bordo de cor azul intensa). Pode engadir ou borrar detalles (ou conceptos) con axuda das iconas situadas para este fin no lateral dereito.<BR>Ademais, pode introducir ou borrar datos globais da factura como descontos, cargos, documentos adxuntos, etc. no panel localizado debaixo da t�boa de conceptos, usando os bot�ns "Engadir" e "Eliminar" situados no lateral dereito.<BR>Finalmente, no apartado "Totais" m�stranse a modo informativo os valores num�ricos dos diversos campos que conformar�n a factura.</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Unha vez cubertos todos os campos obrigatorios, existen d�as posibilidades:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Gardar borrador: Almacenarase na carpeta "Borradores", � espera de ser modificado e/ou asinado posteriormente. Un borrador tam�n pode ser eliminado se as� o desexa.</P></LI>
+    <LI><P>Asinar: Aparecer� unha vent� con todos os certificados dixitais dispo�ibles. Tras seleccionar un deles, xerarase a correspondente factura con sinatura dixital, quedando almacenada na carpeta "Emitidas". Unha factura emitida non poder� ser eliminada.</P></LI>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduci�n de documentos adxuntos. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Se o desexa, pode achegar un ou varios documentos � factura que vai xerar. Para isto, prema na pestana "Adxuntos" situada na secci�n "Detalle de factura". Ao premer no bot�n "Engadir", despregarase unha vent� emerxente na que poder� seleccionar o tipo de ficheiro que desexa achegar (en "Formato"), as� como a ruta da s�a localizaci�n (para isto pode usar o bot�n "Examinar"). Debe introducir obrigatoriamente, ademais, unha descrici�n do documento que achegue.<BR>Finalmente, pode escoller inclu�r (ou non) o ficheiro que achegou no xml da factura. En caso afirmativo, o documento codificarase a binario e pasar� a formar parte do xml; no caso contrario, s� se construir� unha referencia interna entre a factura xerada e o ficheiro achegado. A continuaci�n prema en "Aceptar": o documento seleccionado aparecer� na t�boa de adxuntos.<BR>Do mesmo modo, tam�n pode eliminar documentos adxuntos premendo en "Eliminar".</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduci�n de extensi�ns. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>O bloque "Extensi�n" require un co�ecemento b�sico da estrutura interna dun ficheiro XML. Este formato componse de etiquetas que abren e pechan bloques de informaci�n esquematicamente. A especificaci�n de factura electr�nica define as etiquetas que poden aparecer nos ficheiros XML xerados. <BR>Para agregar novas etiquetas, en primeiro lugar debe indicar na vent� de "Configuraci�n" o descritor de esquema (ficheiro XSD) que se vai estender e o espazo de nomes das etiquetas que hai que engadir.<BR>Despois, introduza o bloque de informaci�n que desexa inserir na factura. Pode facelo de d�as maneiras: <UL TYPE="1">
+    <LI><P>Directamente no campo "Extensi�n".</P></LI>
+    <LI><P>Premendo no bot�n "Ampliar": abrirase unha vent� emerxente onde poder� inserir o bloque de informaci�n.</P></LI>
+  </UL>Posteriormente, prema en "Verificar" para comprobar se a informaci�n introducida cumpre o esquema definido polo ficheiro XSD seleccionado en "Configuraci�n". <BR>Se o resultado � positivo, aparecer� unha mensaxe de �xito e a devandita porci�n de c�digo pasar� a formar parte da factura. Se, pola contra, o resultado � negativo, mostrarase unha mensaxe de advertencia (pode pulsar en "Ampliar" para obter m�is detalles sobre o erro que se produciu) e non se introducir� a informaci�n na factura. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Nota </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>As extensi�ns p�dense introducir en tres lugares diferentes da factura: <UL TYPE="1">
+    <LI><P>A nivel global de factura, dende a vent� de xeraci�n de facturas.</P></LI>
+    <LI><P>A nivel de documentos adxuntos, na pestana "Adxuntos" situada na secci�n "Detalle de factura" da vent� de xeraci�n de facturas.</P></LI>
+    <LI><P>A nivel de concepto ou li�a de detalle, dende a vent� de xeraci�n de conceptos.</P></LI>
+  </UL>
+  </P>
+  <BR>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

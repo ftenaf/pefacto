@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Generació d'una factura en format "facturae"<BR>(versió 3.1) </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruccions d'ús </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Aquesta finestra està destinada a la generació d'esborranys i factures en format "facturae" (versió 3.1). Per a això es mostren una sèrie de camps, alguns dels quals l'usuari ha d'emplenar obligatòriament (marcats amb un asterisc: *) i d'altres no editables (amb un fons de color blau) que són merament informatius. A continuació es descriuen detalladament com s'han d'omplir els diferents camps:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>A la secció "Dades generals factura" es permet introduir dades de caràcter global com ara la data d'emissió, la data i el lloc d'operació o el període de facturació. A més, el sistema assignarà, de manera interna, un identificador únic o "Número de factura" a la factura que s'està generant.</P></LI>
+    <LI><P>A la secció "Emissor" es pot seleccionar un emissor ja existent (d'entre tots els que prèviament s'hagin emmagatzemat en l'aplicació) o introduir un nou emissor i guardar-lo a la base de dades.</P>
+     <UL TYPE="a">
+      <LI><P>En el primer cas, seleccioneu "Persona jurídica" o "Persona física" i, a continuació, desplegueu la pestanya situada a "Emissor". Finalment, premeu sobre l'usuari desitjat.</P></LI>
+      <LI><P>En el segon cas, premeu sobre el botó "Nou usuari". Tot seguit, tots els camps de l'emissor es faran editables (fons de color blanc) perquè pugueu introduir-hi les dades del nou usuari. L'únic camp no editable serà "Identificador", el valor del qual l'assignarà internament l'aplicació. Una vegada emplenats tots els camps obligatoris, premeu el botó "Guardar": apareixerà un missatge informatiu sobre l'èxit / fracàs de l'operació.</P></LI>
+      <LI><P>També és possible esborrar un emissor ja existent, sempre que no hagi estat utilitzat prèviament en cap altra factura o esborrany: n'hi ha prou amb seleccionar-lo i prémer el botó "Esborrar usuari". </UL>
+    </LI>
+    <LI><P>La secció "Receptor" és completament anàloga a l'anterior.</P></LI>
+    <LI><P>A la secció "Detall factura" s'introdueix el(els) concepte(s) que s'han de facturar (taula amb vora de color blau intens). Podeu afegir-hi o esborrar-hi detalls (o conceptes) amb l'ajut de les icones situades a aquest efecte al lateral dret.<BR>A més, podeu introduir o esborrar dades globals de la factura com descomptes, càrrecs, documents adjunts, etc. al plafó localitzat sota de la taula de conceptes, amb l'ajut dels botons "Afegir" i "Eliminar" situats al lateral dret.<BR>Finalment, a l'apartat "Totals" es mostren a manera informativa els valors numèrics dels diversos camps que formaran la factura.</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Una vegada emplenats tots els camps obligatoris, hi ha dues possibilitats:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Guardar esborrany: S'emmagatzemarà a la carpeta "Esborranys", en espera de ser modificat i/o firmat posteriorment. Un esborrany també pot ser eliminat, si ho desitgeu.</P></LI>
+    <LI><P>signar: Apareixerà una finestra amb tots els certificats digitals disponibles. Després de seleccionar-ne un, es generarà la corresponent factura amb signatura digital, que quedarà emmagatzemada a la carpeta "Emeses". Una factura emesa no podrà ser eliminada.</P></LI>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducció de documents adjunts. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Si ho desitgeu podeu adjuntar un o diversos documents a la factura que generareu. Per a això premeu la pestanya "Adjunts" situada a la secció "Detall de factura". En prémer el botó "Afegir", es desplegarà una finestra emergent en la qual podreu seleccionar el tipus de fitxer a adjuntar (a "Format") i també la ruta de la seva localització (per a això us pot ajudar el botó "Examinar"). Heu d'introduir obligatòriament, a més, una descripció sobre el document adjuntat.<BR>Finalment, podeu escollir incloure (o no) el fitxer adjuntat en l'xml de la factura. En cas afirmatiu, el document es codificarà a binari i passarà a formar part de l'xml; en cas contrari, només es construirà una referència interna entre la factura generada i el fitxer adjuntat. A continuació premeu "Acceptar": el document seleccionat apareixerà a la taula d'adjunts.<BR>De la mateixa manera, també podeu eliminar documents adjunts prement "Eliminar".</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducció d'extensions. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>El bloc "Extensió" requereix un coneixement bàsic de l'estructura interna d'un fitxer XML. El format esmentat es compon d'etiquetes que obren i tanquen blocs d'informació esquemàticament. L'especificació de factura electrònica defineix les etiquetes que poden aparèixer als fitxers XML generats. <BR>Per agregar noves etiquetes, en primer lloc heu d'indicar a la finestra de "Configuració" el descriptor d'esquema (fitxer XSD) a estendre i l'espai de noms de les etiquetes que s'han d'afegir.<BR>Després introduïu el bloc d'informació que voleu inserir a la factura. Ho podeu fer de dues maneres: <UL TYPE="1">
+    <LI><P>Directament en el camp "Extensió".</P></LI>
+    <LI><P>Prement al botó "Ampliar": s'obrirà una finestra emergent on podrà inserir el bloc d'informació.</P></LI>
+  </UL>Posteriorment, premeu "Verificar" per comprovar si la informació introduïda compleix l'esquema definit pel fitxer XSD seleccionat a "Configuració". <BR>Si el resultat és positiu, apareixerà un missatge d'èxit i l'esmentada porció de codi passarà a formar part de la factura. Si, al contrari, el resultat és negatiu, es mostrarà un missatge d'advertència (podeu prémer "Ampliar" per obtenir més detalls sobre l'error que s'ha produït) i la informació no s'introduirà a la factura. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>NOTA </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>Les extensions es poden introduir en tres llocs diferents de la factura: <UL TYPE="1">
+    <LI><P>A escala global de factura, des de la finestra de generació de factures.</P></LI>
+    <LI><P>A escala de documents adjunts, a la pestanya "Adjunts" situada a la secció "Detall de factura" de la finestra de generació de factures.</P></LI>
+    <LI><P>A escala de concepte o línia de detall, des de la finestra de generació de conceptes.</P></LI>
+  </UL>
+  </P>
+  <BR>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

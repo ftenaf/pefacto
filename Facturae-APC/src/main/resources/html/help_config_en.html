@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Application configuration </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduction </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>This is the configuration dialogue box in which you can set application parameters such as the identifying series to be used in new issued and corrected invoices, in addition to each of their serial numbers. Only invoice identifiers that do not already exist in the database may be indicated.</p>
+   <P>You may also indicate the route to an image, which will be displayed in the main window of the application and will be taken as an image to attach as a company logo on the invoices generated.</P>
+   <P>In the block called "Proxy", you may provide the data necessary to configure an SMTP mail server which will be used to send your invoices by telematic means, and alternatively, the details regarding the proxy server to pass through to access Internet from a local intranet.</P>  
+   <P>The block called "OCSP" enables you to provide the connection data to an OCSP server, which serves to validate the status of the signature certificate used in the electronic signature of the invoices issued against a validating authority.</P> 
+   <P>Next, in the block called "Extensions", new tags (logical information units) which were not defined in the model of invoice used may be defined; this allows you to extend the model of invoice to meet your needs.</P>
+   <P>Finally, in the block called "Language", you can select the application presentation language. A change of language entails rebooting the application to take effect.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instructions for use </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>General</B><P>Only the prefix of the identifiers of issued (signed) and corrected (corrections or extensions of another invoice) invoices may be specified; they must not be the same (otherwise, a change will be forced). The remaining prefixes are defined by the application. For invoice identifiers to be univocal, the numbers to be assigned cannot already exist in the database. Whenever you lose focus, by using the Tab key or clicking on another place, the application will search the database; should the identifier already exist, the field will be marked red, the value entered will be cleaned and an alert message will be displayed. The invoice numbers will increase automatically as new invoices are created.</P></LI>
+    <LI><B>Logo</B><P>Use the browse button (its icon shows a folder), to select the image to be used as logo. When this is clicked, a dialogue will be opened to show the route of the required image. The application allows images in tif, gif, jpg, png or bmp format to be selected; images will be scaled up to 305 x 121 pixels in size.</P></LI>
+    <LI><B>Proxy</B><P>The section "Proxy" is composed of two parts: the left part, which is used to specify the mail server connection data, and the right part, whose purpose is to provide the connection data to the Internet access proxy, in the event of there being one. The SMTP mail server connection data are composed of a URL (an Internet address, e.g., "www.ServidorSMTP.es") or an IP. The next field is the connection port, followed by a checkbox which enables the use of the SSL secure connection protocol, and if this requires authentication by following the schema "User-Password". The last field is used to indicate the e-mail account, belonging to the server mentioned, to be used as message issuer. </BR>On the right hand side, used to indicate the use of a proxy, the URL of the proxy server is given (e.g., "www.Proxy.es") or an IP, followed by the attack port, and analogously, if the schema "User-Password" is used to identify clients.</P></LI>
+    <LI><B>OCSP</B><P>In this block, the data of a validation authority are provided in order to verify that the signature certificates are valid. This validation can be carried out when an invoice is issued (that is, when signing it) and/or when it is received. The last field is used to indicate the Internet address of the OCSP server (e.g., "www.ServidorOCSP.es", or an IP).</P></LI>
+    <LI><B>Extensions</B><P>The block "Extensions" requires a basic knowledge of the internal structure of an XML file. This format is composed of tags which open and close blocks of information schematically. The electronic bill specification defines the tags that may be displayed in the XML files generated. To add new tags, you must first indicate the schema descriptor (it is an XSD file) to be extended; then you must indicate the space of tag names to be added (e.g., "http://www.w3.org/2000/09/xmldsig#"), and, finally, press "+". The "-" key will delete the line selected.</P>
+    <LI><B>Language</B><P>To choose another language among those available, click on the button on the right and the dialogue will be displayed. Should you select a different language from the current one, a warning will be displayed for you to reboot the application.</P>   
+    <LI><B>FACe</B><P>Use the Settings button to access face the screen with information on access to invoicing service.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

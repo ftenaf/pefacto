@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+	<META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+	<STYLE type="text/css">
+		H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+		P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+	</STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD BGCOLOR="#E6F0FA" COLSPAN="2">
+			<H1><B>Pantalla principal</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Introducci&oacute;n</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<P>&Eacute;sta es la ventana principal desde la que usted podr&aacute; acceder a todas las dem&aacute;s ventanas, y realizar todas las acciones implementadas en la aplicaci&oacute;n, asi como ver los listados de facturas existentes en la base de datos, discriminando por su estado (a trav&eacute;s del &aacute;rbol de navegaci&oacute;n en la esquina superior izquierda, es decir, si son facturas emitidas, enviadas, rectificadas...). Adicionalmente, el listado de facturas que se muestran en la tabla central, puede ser discriminado a su vez realizando una b&uacute;squeda selectiva mediante el filtro de b&uacute;squeda que hay en la parte superior de la pantalla.</P>
+			<P>En funci&oacute;n del estado seleccionado en el &aacute;rbol de facturas, aparecer&aacute;n, en la parte inferior de la pantalla, las distintas acciones disponibles para el tipo de factura, siendo las m&aacute;s comunes, la visualizaci&oacute;n, la edici&oacute;n y la firma de facturas. M&aacute;s adelante veremos pormenorizadamente las acciones disponibles para cada uno de los estados de factura, as&iacute; como su utilidad y modo de uso.</P>
+			<P>En la parte izquierda de la pantalla se recogen los botones destinados a realizar el resto de acciones disponibles no referidas a una factura existente en base de datos. Por orden, &eacute;stas son generar una nueva factura perteneciente al esquema seleccionado en el men&uacute; desplegable que le sigue (por defecto, 3.1), introducir en la base de datos una factura externa previa triple validaci&oacute;n, acceder a la configuraci&oacute;n de la aplicaci&oacute;n, realizar b&uacute;squedas de facturas con un filtro m&aacute;s restrictivo y completo que el de esta pantalla, visualizar el resumen de IVA de todas las facturas, consultar el hist&oacute;rico de acciones realizadas por la aplicaci&oacute;n, importar una base de datos externa o exportar la actual a fichero.</P>
+			<P>En la esquina inferior izquierda de la ventana, se muestra su imagen seleccionada a modo de logotipo (modificable desde configuraci&oacute;n) y una barra de progreso que indica el estado de las tareas a realizar.</P>
+			<BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Instrucciones de uso</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<UL TYPE="1">
+				<LI><B>&Aacute;rbol de facturas</B><P>En el &aacute;rbol de facturas se permite escoger entre el tipo de facturas a mostrar seg&uacute;n su estado, que puede ser: <I>"Borrador"</I> para las facturas a&uacute;n no firmadas, <I>"Emitida"</I> para las facturas firmadas, <I>"Enviada"</I> para las facturas firmadas y enviadas por correo electr&oacute;nico, y <I>"Recibidas"</I> para las facturas externas a�adidas a la base de datos mediante el di&aacute;logo <I>"Recibir factura"</I>. Para las facturas <I>"Rectificativas"</I>, es decir, las facturas firmadas que han sido corregidas, se tienen las m&iacute;smas categorias, salvo la opci&oacute;n de <I>"Recibidas"</I>. Para cambiar la navegaci&oacute;n entre unas y otras simplemente haga clic sobre la opci&oacute;n deseada. Para expandir el nodo <I>"Rectificativas"</I> haga clic sobre el bot&oacute;n "+" que hay a su izquierda. Al cambiar la selecci&oacute;n en el &aacute;rbol, se listar&aacute;n todas las facturas que est&eacute;n en ese estado, y se mostrar&aacute;n los botones relacionados.</P></LI>
+				<LI><B>Filtro de facturas</B><P>El filtro de facturas es utilizado para acotar las coincidencias encontradas en la base de datos. Usted puede filtrar la b&uacute;squeda indicando un emisor espec&iacute;fico de factura (se mostrar&aacute;n las facturas realizadas por dicho emisor), as&iacute; como un receptor, y/o un concepto facturado en concreto. Para realizar una b&uacute;squeda de facturas creadas dentro de un periodo de tiempo, marque la opci&oacute;n <I>"Fecha"</I>. Se mostrar&aacute;n dos campos para que indique el inicio y el final del periodo de tiempo seleccionado (los d&iacute;as seleccionados se incluyen en el periodo de b&uacute;squeda). Para hacer que la b&uacute;squeda se haga efectiva, haga clic en el bot&oacute;n <I>"B&uacute;squeda"</I> tras indicar los filtros a utilizar. Se mostrar&aacute;n todas las facturas que cumplan dichas condiciones y que est&eacute;n en el estado selecionado en el &aacute;rbol de facturas.</P></LI>
+				<LI><B>Tabla de facturas</B><P>La tabla de facturas muestra las facturas encontradas en base de datos, ordenadas por orden de creaci&oacute;n. Los datos mostrados son: <I>"Identificador"</I>, que es la serie y n&uacute;mero que identifican un&iacute;vocamente a la factura. La <I>"Fecha"</I>, que indica la fecha de creaci&oacute;n de la factura. El <I>"Emisor"</I> muestra el identificador del emisor de la factura. La columna <I>"Receptor"</I> muestra el identificador para el cliente del emisor. El campo <I>"Importe"</I> muestra el importe total de la factura, expresado en euros. Y finalmente, la <I>"Versi&oacute;n"</I> muestra la versi&oacute;n del esquema al cual la factura pertenece. A continuaci&oacute;n se muestran tres botones, una interrogaci&oacute;n, un ojo y un cubo de basura, que pueden ser empleados para consultar el estado de la factura en FACe, mostrar la factura en distintos formatos normalizados, y para borrar la factura (sin posibilidad de recuperaci&oacute;n) respectivamente.</P></LI>
+				<LI><B>Botones de facturas</B><P>Los botones de facturas aglutinan las distintas acciones que se pueden realizar sobre una factura seleccionada (si no hay una factura seleccionada en la tabla de facturas, estos botones no har&aacute;n nada). Los distintos estados de factura que existen determinan las opciones que se pueden realizar sobre ellas. �stas son:
+					<UL TYPE="1">
+					<LI>"Visualizar".- <P>Permite visualizar el formulario de factura, pero sin la posibilidadd de cambiar ning&uacute;n dato.</P></LI>
+					<LI>"Adjuntos".- <P>Permite visualizar un listado con todos los ficheros adjuntos que la factura tiene, as&iacute; como a&ntilde;adir adjuntos nuevos (sin posibilidad de incluirlos en el archivo de factura) o eliminarlos.</P></LI>
+					<LI>"Editar".- <P>Permite entrar dentro del formulario relleno de la factura como si de una factura nueva se tratara, es decir, se puede cambiar cualquiera de sus datos, y posteriormente guardar o firmar.</P></LI>
+					<LI>"Firmar".- <P>Inicia el proceso de firma de la factura mediante certificado digital para firma. Se abrir&aacute; un di&aacute;logo para que seleccione el certificado de firma a utilizar.</P></LI>
+					<LI>"Ver XML".- <P>Abre un navegador mostrando el c&oacute;digo XML de la factura. Es decir, se muestra el interior de la factura, no una representaci&oacute;n normalizada de la misma (accesible mediante el ojo dentro de la l&iacute;nea de factura).</P></LI>
+					<LI>"Rectificar".- <P>Es an&aacute;logo al bot&oacute;n "Editar", salvo porque al guardar o firmar se mostrar&aacute; un di&aacute;logo para que indique las causas de rectificaci&oacute;n. La nueva factura generada pasar&aacute; a encontrarse dentro del nodo "Rectificativa" en el &aacute;rbol de facturas.</P></LI>
+					<LI>"Enviar".- <P>Al pulsar este bot&oacute;n, se mostrar&aacute; un di&aacute;logo para que usted pueda escribir un correo electr&oacute;nico con la factura seleccionada como fichero adjunto.</P></LI>
+					<LI>"Reenviar".- <P>Es an&aacute;logo al bot&oacute;n "Enviar".</P></LI>
+					<LI>"Ver rectificaciones".- <P>Muestra un di&aacute;logo con las causas de rectificaci&oacute;n de la factura rectificativa seleccionada.</P></LI>
+					</UL>
+				</P></LI>
+				<LI><B>Botones de aplicaci&oacute;n</B><P>Estos botones permiten realizar el resto de acciones implementadas en la aplicaci&oacute;n. Su utilidad est&aacute; explicada en el apartado llamado "Introducci&oacute;n", que se encuentra sobre estas l&iacute;neas. Para utilizarlas, simplemente haga clic en la opci&oacute;n deseada. Cada una de las opciones abrir&aacute; un di&aacute;logo propio que contiene su propia ayuda contextual, por lo que nos remitimos a ella para definir m&aacute;s profundamente su funcionamiento interno.</P>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+			<BR><BR>
+		</TD>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

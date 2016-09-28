@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="es.mityc.appfacturae.hibernate.auxClass.Action" table="HISTORICAL">
+	<id name="id" type="int" column="ID">
+		<generator class="increment"/>
+	</id>
+	<property name="date" not-null="true" column="DATE" type="XMLGregorianCalendar"/>
+	<property name="invoice" column="INVOICE"/>
+	<property name="error" column="ERROR"/>
+	<many-to-one name="operation" class="es.mityc.appfacturae.hibernate.auxClass.Operation" not-null="true" column="OPERATION"/>
+</class>
+
+<class name="es.mityc.appfacturae.hibernate.auxClass.Operation" table="OPERATION">
+	<id name="code" column="CODE"/>
+	<property name="shortName" unique="true" not-null="true" column="SHORT_NAME"/>
+	<property name="description" column="DESCRIPTION"/>
+	<property name="info" column="ADDITIONAL_INFO"/>
+</class>
+
+
+    
+</hibernate-mapping>

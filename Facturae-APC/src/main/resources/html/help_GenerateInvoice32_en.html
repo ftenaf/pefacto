@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Generating an invoice in "facturae" format<BR>(version 3.2) </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instructions for use </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>This window is devoted to generating drafts and invoices in "facturae" format (version 3.2). For this purpose a number of fields are displayed, some of which must be filled in by the user (marked with an asterisk: *) and other non-editable ones (with a blue background) which are merely for information purposes. We shall now describe in detail how to fill in the different fields:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>In the section "General invoice data" you can enter global details such as the date of issue, the transaction date and place and the billing period. In addition, the system will assign, internally, a unique identifier or "Invoice number" to the invoice being generated.</P></LI>
+    <LI><P>In the section "Issuer" an existing issuer may be selected (from among all those previously stored in the application) or a new issuer may be entered and saved in the database.</P>
+     <UL TYPE="a">
+      <LI><P>In the first case, select "Legal entity" or "Private individual" and then click on the "Issuer" tab. Finally, click on the desired user.</P></LI>
+      <LI><P>In the second case, click on "New User". Immediately, all issuer fields will become editable (white background) so that you can enter the new user data. The only non-editable field will be "Identifier", whose value will be internally assigned by the application itself. Once all compulsory fields have been completed, click on "Save": a message will pop up reporting on the success or failure of the operation.</P></LI>
+      <LI><P>It is also possible to delete an existing issuer, provided it has not previously been used in another invoice or draft copy: all you have to do is select it and click on "Delete user". </UL>
+    </LI>
+    <LI><P>The section "Recipient" is completely analogous to the previous one. In this case, the FACe tab will be enabled, if selected to be a recipient of this type.</P></LI>
+    <LI><P>In the section "Invoice Detail" you must enter the item(s) to be billed (table with deep blue borders). You may add or delete details (or items) by using the icons situated for the purpose on the right hand side.<BR>In addition, you may enter or delete global invoice data such as discounts, charges, attached documents ...etc. in the panel located beneath the items table; to do this, you use the buttons "Add" and "Delete" which are situated on the right hand side.<BR>Finally, in the section "Totals" the numerical values of the different fields that will make up the invoice are shown for information purposes.</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Once all the compulsory fields have been completed, there are two possibilities:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Save draft: It will be stored in the "Drafts" folder, pending subsequent modification and/or signing. A draft may also be deleted if one wishes.</P></LI>
+    <LI><P>Sign: A window will open with all the digital certificates available. After selecting one of them, the corresponding invoice will be generated with a digital signature and will be stored in the "Issued" folder. An invoice that has been issued cannot be deleted.</P></LI>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Attaching documents. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>If you wish, you may attach one or several documents to the invoice to be generated. To do this, click on the tab "Attached" situated in the section "Invoice detail". When "Add" is clicked, an emerging window will open where you can select the type of file to attach (in "Format") and the route to its location (click on "Browse" to do this). It is compulsory to enter, in addition, a description of the document attached.<BR>Finally, you can choose to include (or not) the file attached in the invoice xml. If you do include it, the document will be binary encoded and will become a part of the xml; if you do not include it, an internal reference will only be constructed between the invoice generated and the file attached. Next, click on "OK": the document selected will appear in the attached table.<BR>In the same way, you can also delete attached documents by clicking on "Delete".</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Entering extensions. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>The block "Extension" requires a basic knowledge of the internal structure of an XML file. This format is composed of tags which open and close blocks of information schematically. The electronic bill specification defines the tags that may be displayed in the XML files generated. <BR>To add new tags, you must first indicate in the "Configuration" window the schema descriptor (XSD file) to be extended and the tag names space to be added.<BR>Then, enter the information block you wish to insert in the invoice. You can do this in two ways: <UL TYPE="1">
+    <LI><P>Directly in the field "Extension".</P></LI>
+    <LI><P>By clicking on "Extend": an emerging window will open in which you can insert the information block.</P></LI>
+  </UL>Next, click on "Verify" to check whether the information entered complies with the schema defined by the XSD file selected in "Configuration". <BR>If the result is positive, a success message will pop up and this portion of code will become part of the invoice. If, on the other hand, the result is negative, a warning message will be displayed (you can click on "Extend" to obtain more information on the error that occurred) and the information will not be entered in the invoice. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>NOTE </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>Extensions may be entered in three different places in the invoice: <UL TYPE="1">
+    <LI><P>At global invoice level, from the invoice generation window.</P></LI>
+    <LI><P>At attached document level, in the "Attached" tab situated In the section "Invoice detail" of the invoice generation window.</P></LI>
+    <LI><P>At item or detail line level, from the item generation window.</P></LI>
+  </UL>
+  </P>
+  <BR>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

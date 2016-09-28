@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Aplikazioaren ezarpena </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Sarrera </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Ezarpen-elkarrizketa honetan aplikazioaren parametroak prestatu ditzakezu, hala nola: igorritako faktura eta faktura zuzentzaile berrietan erabili behar diren identifikazio serieak eta serie zenbaki bakoitza. Datu-basean ez dauden faktura-identifikatzaileak bakarrik adieraz daitezke.</p>
+   <P>Irudi baterako bidea ere azaldu dezakezu, aplikazioaren leiho nagusian erakutsiko da eta egindako fakturekin batera doan iruditzat hartuko da enpresako logotipo gisa.</P>
+   <P>Proxy izeneko blokean, SMTP korreoaren zerbitzaria ezartzeko behar diren datuak adieraz daitezke eta fakturak telematikoki bidaltzeko erabiliko da, eta nahi izanez gero, zeharkatu behar diren proxy zerbitzariaren datuak ere adieraz daitezke tokiko intranet batetik internetera sartu ahal izateko.</P>  
+   <P>OCSP izeneko blokeari esker OCSP zerbitzari batera konektatzeko datuak eman daitezke, eta balidazio agintearen aurka igorritako fakturetan sinadura elektronikoan erabilitako sinadura-ziurtagirien egoera balidatzeko balio du.</P> 
+   <P>Jarraian "Luzapenak" izeneko blokean erabilitako fakturaren eskeman definitu ez diren tag berriak definitu daitezke (informazio unitate logikoak), eta honi esker zure beharren araberako faktura-eskema egin dezakezu.</P>
+   <P>Azkenik, "Hizkuntza" izeneko blokean aplikazioaren aurkezpen hizkuntza hautatu daiteke. Hizkuntza aldaketak eragina izan dezan aplikazioa berrabiarazi egin behar da.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Erabiltzeko argibideak </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>Orokorra</B><P>Igorritako fakturen (sinatutakoak) eta faktura zuzentzaileen (beste faktura bat zuzendu edo zerbait erantsi) identifikatzaileen aurrezenbakia bakarrik zehaztu daiteke, eta ezin dute berdinak izan (berdinak izango balira aldaketa egitera behartuko da). Beste aurrezenbakiak aplikazioak definitzen ditu. Fakturaren identifikatzaileak adiera bakarrekoak izan daitezen eman behar diren zenbakiak datu-basean aurretik egon gabekoak izan behar dute. Fokua galtzen duzunean, tabuladorea erabiliz edo saguarekin beste edonon klik eginez, aplikazioak datu-basean kontsulta egingo du, eta identifikatzailea existituko balitz eremua gorriz azalduko da, sartutako balioa garbituko da eta erne-mezua azalduko da. Faktura zenbakiak automatikoki gehituz joango dira faktura berriak sortu ahala.</P></LI>
+    <LI><B>Logoa</B><P>Aztertu botoia erabili (ikonoa karpeta bat da), logotipo gisa erabili nahi duzun irudia hautatzeko. Botoi hori sakatzean elkarrizketa bat irekiko da nahi duzun irudira joateko bidea adierazteko. Aplikazioak tif, gif, jpg, png edo bmp formatuak dituzten irudiak hautatzen uzten du eta irudi hau 305 x 121 pixel neurrirainoko eskalan egingo da.</P></LI>
+    <LI><B>Proxy</B><P>Proxy atalak bi zati ditu: ezkerraldea korreo zerbitzariari konexio datuak zehazteko erabiltzen da, eta eskuinaldearen helburua internetara sartzeko proxyren konexio datuak ematea da, egongo balira. SMTP korreo zerbitzariaren konexio datuek URL (Interneteko helbide bat, adibidez,  "www.ServidorSMTP.es") edo IP bat dute. Hurrengo eremua konexio-ataka da, jarraian checkbox bat dago eta SSL konexioa seguru egiteko protokoloa prestatzen du, eta "Erabiltzaile-Pasahitza" eskema jarraituz baimena eskatzen badu. Azken eremua korreo kontua adierazteko erabiltzen da, adierazitako zerbitzariarena da eta mezuaren igorle gisa erabiliko da. </BR>Eskuinaldean, proxy erabiltzen ari garela adierazten duena, proxy zerbitzariaren URL adierazten da (adibidez, "www.Proxy.es") edo IP bat, jarraian eraso-ataka, eta era berean, bezeroak identifikatzeko "Erabiltzaile-Pasahitza" eskema erabiltzen bada.</P></LI>
+    <LI><B>OCSP</B><P>Bloke honetan balidazio aginte baten datuak ematen dira sinadura ziurtagiriak baliodunak izan daitezen txekeatzeko. Balidazio hori faktura bat igortzean (hau da, sinatzean) eta/edo jasotzean egin daiteke. Azken eremua OCSP zerbitzariaren Interneteko helbidea adierazteko erabiltzen da (adibidez, "www.ServidorOCSP.es", edo IP bat).</P></LI>
+    <LI><B>Luzapenak</B><P>Luzapenak blokeak XML fitxategiaren oinarrizko barne egitura ezagutzea eskatzen du. Formatu horrek eskematikoki informazio blokeak irekitzen eta ixten dituen etiketak ditu. Faktura elektronikoaren espezifikazioak sortutako XML fitxategietan azaldu daitezkeen etiketak definitzen ditu. Etiketa berriak eransteko lehenik hedatu behar den eskema-deskribatzailea (XSD fitxategia da) adierazi behar duzu, jarraian erantsi behar diren etiketen izenak adierazi behar dituzu (adibidez, "http://www.w3.org/2000/09/xmldsig#"), eta amaitzeko sakatu "+" botoia. "-" botoiarekin hautatutako lerroa ezabatuko da.</P>
+    <LI><B>Hizkuntza</B><P>Erabilgarri dauden hizkuntzen artean beste bat aukeratzeko, egizu klik eskuinean dagoen botoiaren gainean eta leihoa azalduko da. Orain dagoen hizkuntzaren desberdina hautatuko bazenu, aplikazioa berrabiarazteko oharra azalduko da.</P>   
+    <LI><B>FACe</B><P>Erabili Ezarpenak botoia aurpegia sartzeko fakturazio zerbitzua buruzko informazioa pantailan.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

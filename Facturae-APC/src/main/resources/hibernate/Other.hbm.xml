@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+
+<!--  The user can't define attachment extensions and units of measure. The values are restricted
+	  in the xsd file -->
+
+<!-- 
+<class name="es.mityc.appfacturae.hibernate.auxClass.UnitOfMeasure" table="UNIT_OF_MEASURE">
+	<id name="name" type="string" column="NAME"/>
+	<property name="description" column="DESCRIPTION"/>
+</class>
+
+<class name="es.mityc.appfacturae.hibernate.auxClass.AttachedExtension" table="ATTACHED_EXTENSION">
+	<id name="ext" type="string" column="EXT"/>
+	<property name="description" column="DESCRIPTION"/>
+</class> 
+-->
+
+<class name="es.mityc.appfacturae.facturae.AccountType" table="ACCOUNT">
+	<id name="id" type="int" column="ACCOUNT_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">ACCOUNT</param>
+			<param name="column">ACCOUNT_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string" not-null="false" insert="false"/>
+	<subclass name="es.mityc.appfacturae.facturae32.AccountType" discriminator-value="3.2">
+		<property name="iban" not-null="true" column="IBAN"/>
+		<property name="bankCode" column="BANK_CODE"/>
+		<property name="branchCode" column="BRANCH_CODE"/>
+		<many-to-one name="generalAddress" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<property name="accountNumber" column="ACCOUNT_NUMBER"/>
+		<property name="bic" column="BIC"/>
+	</subclass>
+	<subclass name="es.mityc.appfacturae.facturae321.AccountType" discriminator-value="3.2.1">
+		<property name="iban" not-null="true" column="IBAN"/>
+		<property name="bankCode" column="BANK_CODE"/>
+		<property name="branchCode" column="BRANCH_CODE"/>
+		<many-to-one name="generalAddress" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<property name="accountNumber" column="ACCOUNT_NUMBER"/>
+		<property name="bic" column="BIC"/>
+	</subclass> 	 
+</class>
+    
+<class name="es.mityc.appfacturae.hibernate.auxClass.AttachedDocument" table="ATTACHMENT">
+	<id name="id" type="int" column="ID">
+		<generator class="increment"/>
+	</id>
+	<property name="invoiceId" column="INVOICE"/>
+	<property name="extension" column="EXTENSION"/>
+	<property name="description" column="DESCRIPTION"/>
+	<property name="path" column="PATH"/>
+	<property name="isIncluded" type="int" column="INCLUDED"/>
+</class>
+
+</hibernate-mapping>

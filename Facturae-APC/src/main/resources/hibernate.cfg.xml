@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+		
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.url">jdbc:hsqldb:file:FacturaeDB;create=true;shutdown=true</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+		
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+		
+		<!-- Large instances of binary or serializable type -->
+		<property name="hibernate.jdbc.use_streams_for_binary">true</property>
+		 
+		<!-- SQL dialect -->
+		<!-- property name="dialect">org.hibernate.dialect.HSQLDialect</property> -->
+		<property name="dialect">es.mityc.appfacturae.hibernate.CustomHSQLDBDialect</property>
+		
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		
+		<!-- Update the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!-- A non-zero value enables use of JDBC2 batch updates by Hibernate -->
+		<!-- A zero value gets a very good error / log description -->
+		<property name="hibernate.jdbc.batch_size">0</property>
+		
+		<property name="hsqldb.lock_file">true</property>
+		
+		<mapping resource="hibernate/UserType.hbm.xml"/>
+		<mapping resource="hibernate/Facturae.hbm.xml"/>
+		<mapping resource="hibernate/Party.hbm.xml"/>
+		<mapping resource="hibernate/Invoice.hbm.xml"/>
+		<mapping resource="hibernate/Other.hbm.xml"/>
+		<mapping resource="hibernate/Historical.hbm.xml"/>
+		<mapping resource="hibernate/FACeData.hbm.xml"/>
+
+	</session-factory>
+
+</hibernate-configuration>

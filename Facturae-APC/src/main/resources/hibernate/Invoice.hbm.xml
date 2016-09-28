@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+
+<class name="es.mityc.appfacturae.facturae.InvoiceType" table="INVOICE">
+	<id name="internalId" type="int" column="INVOICE_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">INVOICE</param>
+			<param name="column">INVOICE_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string"/>
+	<subclass name="es.mityc.appfacturae.facturae32.InvoiceType" discriminator-value="3.2">
+		<property name="state" not-null="true" column="STATE" type="es.mityc.appfacturae.hibernate.userType.EnumInvoiceStatusType"/>
+		<component name="invoiceHeader" class="es.mityc.appfacturae.facturae.InvoiceHeaderType">
+			<property name="invoiceNumber" not-null="true" unique-key="INVOICE_ID" column="NUMBER"/>
+			<property name="invoiceSeriesCode" unique-key="INVOICE_ID" column="SERIES_CODE"/>
+			<property name="invoiceDocumentType" not-null="true" column="DOCUMENT_TYPE" type="es.mityc.appfacturae.hibernate.userType.EnumDocumentType"/>
+			<property name="invoiceClass" not-null="true" column="CLASS" type="es.mityc.appfacturae.hibernate.userType.EnumClassType"/>
+		</component>
+		<component name="invoiceIssueData" class="es.mityc.appfacturae.facturae32.InvoiceIssueDataType">
+			<property name="issueDate" not-null="true" column="ISSUE_DATE" type="XMLGregorianCalendar"/>
+			<property name="invoiceCurrencyCode" not-null="true" column="CURRENCY_CODE" type="es.mityc.appfacturae.hibernate.userType.EnumCurrency31Type"/>
+			<property name="taxCurrencyCode" not-null="true" column="TAX_CURRENCY_CODE" type="es.mityc.appfacturae.hibernate.userType.EnumCurrency31Type"/>
+			<property name="languageName" not-null="true" column="LANGUAGE" type="es.mityc.appfacturae.hibernate.userType.EnumLanguageType"/>
+			<property name="operationDate" column="OPERATION_DATE" type="XMLGregorianCalendar"/>
+			<component name="placeOfIssue" class="es.mityc.appfacturae.facturae.PlaceOfIssueType">
+				<property name="postCode" column="PLACE_OF_ISSUE_POST_CODE"/>
+				<property name="placeOfIssueDescription" column="PLACE_OF_ISSUE_DESCRIPTION"/>
+			</component>
+			<component name="invoicingPeriod" class="es.mityc.appfacturae.facturae.PeriodDates">
+				<property name="startDate" column="INVOICING_PERIOD_START" type="XMLGregorianCalendar"/>
+				<property name="endDate" column="INVOICING_PERIOD_END" type="XMLGregorianCalendar"/>
+			</component>
+		</component>
+		<component name="invoiceTotals" class="es.mityc.appfacturae.facturae32.InvoiceTotalsType">
+				<property name="totalGrossAmount" not-null="true" column="TOTAL_GROSS"/>
+				<property name="totalGeneralDiscounts" column="TOTAL_DISCOUNTS"/>
+				<property name="totalGeneralSurcharges" column="TOTAL_SURCHARGES"/>
+				<property name="totalGrossAmountBeforeTaxes" not-null="true" column="TOTAL_GROSS_BEFORE_TAX"/>
+				<property name="totalTaxOutputs" not-null="true" column="TOTAL_TAX_OUTPUTS"/>
+				<property name="totalTaxesWithheld" not-null="true" column="TOTAL_TAX_WITHHELD"/>
+				<property name="invoiceTotal" not-null="true" column="INVOICE_TOTAL"/>
+				<property name="totalOutstandingAmount" not-null="true" column="TOTAL_OUTSTANDING"/>
+				<property name="totalExecutableAmount" not-null="true" column="TOTAL_EXECUTABLE"/>
+				<property name="totalFinancialExpenses" column="TOTAL_FINANCIAL"/>
+				<property name="totalReimbursableExpenses" column="TOTAL_REIMBURSABLE"/>
+		</component>
+		<component name="items" class="es.mityc.appfacturae.facturae.ItemsType">
+			<list name="invoiceLine" table="INVOICE_ITEM">
+				<key column="INVOICE_ID"/>
+				<list-index column="sortOrder"/>
+				<many-to-many class="es.mityc.appfacturae.facturae.InvoiceLineType" column="ITEM_ID"/>
+			</list>
+		</component>
+		<component name="paymentDetails" class="es.mityc.appfacturae.facturae32.InstallmentsType">
+			<list name="installment" table="INVOICE_PAYMENT">
+				<key column="INVOICE_ID"/>
+				<list-index column="sortOrder"/>
+				<many-to-many class="es.mityc.appfacturae.facturae.InstallmentType" column="PAYMENT_ID"/>
+			</list>
+		</component>
+	</subclass>
+	<subclass name="es.mityc.appfacturae.facturae321.InvoiceType" discriminator-value="3.2.1">
+		<property name="state" not-null="true" column="STATE" type="es.mityc.appfacturae.hibernate.userType.EnumInvoiceStatusType"/>
+		<component name="invoiceHeader" class="es.mityc.appfacturae.facturae.InvoiceHeaderType">
+			<property name="invoiceNumber" not-null="true" unique-key="INVOICE_ID" column="NUMBER"/>
+			<property name="invoiceSeriesCode" unique-key="INVOICE_ID" column="SERIES_CODE"/>
+			<property name="invoiceDocumentType" not-null="true" column="DOCUMENT_TYPE" type="es.mityc.appfacturae.hibernate.userType.EnumDocumentType"/>
+			<property name="invoiceClass" not-null="true" column="CLASS" type="es.mityc.appfacturae.hibernate.userType.EnumClassType"/>
+		</component>
+		<component name="invoiceIssueData" class="es.mityc.appfacturae.facturae321.InvoiceIssueDataType">
+			<property name="issueDate" not-null="true" column="ISSUE_DATE" type="XMLGregorianCalendar"/>
+			<property name="invoiceCurrencyCode" not-null="true" column="CURRENCY_CODE" type="es.mityc.appfacturae.hibernate.userType.EnumCurrency31Type"/>
+			<property name="taxCurrencyCode" not-null="true" column="TAX_CURRENCY_CODE" type="es.mityc.appfacturae.hibernate.userType.EnumCurrency31Type"/>
+			<property name="languageName" not-null="true" column="LANGUAGE" type="es.mityc.appfacturae.hibernate.userType.EnumLanguageType"/>
+			<property name="operationDate" column="OPERATION_DATE" type="XMLGregorianCalendar"/>
+			<component name="placeOfIssue" class="es.mityc.appfacturae.facturae.PlaceOfIssueType">
+				<property name="postCode" column="PLACE_OF_ISSUE_POST_CODE"/>
+				<property name="placeOfIssueDescription" column="PLACE_OF_ISSUE_DESCRIPTION"/>
+			</component>
+			<component name="invoicingPeriod" class="es.mityc.appfacturae.facturae.PeriodDates">
+				<property name="startDate" column="INVOICING_PERIOD_START" type="XMLGregorianCalendar"/>
+				<property name="endDate" column="INVOICING_PERIOD_END" type="XMLGregorianCalendar"/>
+			</component>
+		</component>
+		<component name="invoiceTotals" class="es.mityc.appfacturae.facturae321.InvoiceTotalsType">
+				<property name="totalGrossAmount" not-null="true" column="TOTAL_GROSS"/>
+				<property name="totalGeneralDiscounts" column="TOTAL_DISCOUNTS"/>
+				<property name="totalGeneralSurcharges" column="TOTAL_SURCHARGES"/>
+				<property name="totalGrossAmountBeforeTaxes" not-null="true" column="TOTAL_GROSS_BEFORE_TAX"/>
+				<property name="totalTaxOutputs" not-null="true" column="TOTAL_TAX_OUTPUTS"/>
+				<property name="totalTaxesWithheld" not-null="true" column="TOTAL_TAX_WITHHELD"/>
+				<property name="invoiceTotal" not-null="true" column="INVOICE_TOTAL"/>
+				<property name="totalOutstandingAmount" not-null="true" column="TOTAL_OUTSTANDING"/>
+				<property name="totalExecutableAmount" not-null="true" column="TOTAL_EXECUTABLE"/>
+				<property name="totalFinancialExpenses" column="TOTAL_FINANCIAL"/>
+				<property name="totalReimbursableExpenses" column="TOTAL_REIMBURSABLE"/>
+		</component>
+		<component name="items" class="es.mityc.appfacturae.facturae.ItemsType">
+			<list name="invoiceLine" table="INVOICE_ITEM">
+				<key column="INVOICE_ID"/>
+				<list-index column="sortOrder"/>
+				<many-to-many class="es.mityc.appfacturae.facturae.InvoiceLineType" column="ITEM_ID"/>
+			</list>
+		</component>
+		<component name="paymentDetails" class="es.mityc.appfacturae.facturae32.InstallmentsType">
+			<list name="installment" table="INVOICE_PAYMENT">
+				<key column="INVOICE_ID"/>
+				<list-index column="sortOrder"/>
+				<many-to-many class="es.mityc.appfacturae.facturae.InstallmentType" column="PAYMENT_ID"/>
+			</list>
+		</component>
+	</subclass>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.InstallmentType" table="PAYMENT_DETAIL">
+	<id name="id" type="int" column="PAYMENT_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">PAYMENT_DETAIL</param>
+			<param name="column">PAYMENT_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string" not-null="false" insert="false"/>
+	<subclass name="es.mityc.appfacturae.facturae32.InstallmentType" discriminator-value="3.2">
+		<property name="installmentDueDate" not-null="true" column="DUE_DATE" type="XMLGregorianCalendar"/>
+		<property name="installmentAmount" not-null="true" column="AMOUNT"/>
+		<property name="paymentMeans" not-null="true" column="MEAN"/>
+		<property name="paymentReconciliationReference" column="RECONCILIATION_REF"/>
+		<property name="collectionAdditionalInformation" column="ADDITIONAL_INFO"/>
+		<many-to-one name="accountToBeCredited" class="es.mityc.appfacturae.facturae.AccountType" column="ACCOUNT_TO_BE_CREDITED"/>
+		<many-to-one name="accountToBeDebited" class="es.mityc.appfacturae.facturae.AccountType" column="ACCOUNT_TO_BE_DEBITED"/>
+		<property name="debitReconciliationReference" column="DEBIT_RECONCILIATION_REF"/>
+	</subclass> 
+	<subclass name="es.mityc.appfacturae.facturae321.InstallmentType" discriminator-value="3.2.1">
+		<property name="installmentDueDate" not-null="true" column="DUE_DATE" type="XMLGregorianCalendar"/>
+		<property name="installmentAmount" not-null="true" column="AMOUNT"/>
+		<property name="paymentMeans" not-null="true" column="MEAN"/>
+		<property name="paymentReconciliationReference" column="RECONCILIATION_REF"/>
+		<property name="collectionAdditionalInformation" column="ADDITIONAL_INFO"/>
+		<many-to-one name="accountToBeCredited" class="es.mityc.appfacturae.facturae.AccountType" column="ACCOUNT_TO_BE_CREDITED"/>
+		<many-to-one name="accountToBeDebited" class="es.mityc.appfacturae.facturae.AccountType" column="ACCOUNT_TO_BE_DEBITED"/>
+		<property name="debitReconciliationReference" column="DEBIT_RECONCILIATION_REF"/>
+	</subclass>	
+</class>
+
+<class name="es.mityc.appfacturae.facturae.InvoiceLineType" table="ITEM">
+	<id name="id" type="int" column="ITEM_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">ITEM</param>
+			<param name="column">ITEM_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string" not-null="false" insert="false"/>
+	<subclass name="es.mityc.appfacturae.facturae32.InvoiceLineType" discriminator-value="3.2">     
+		<property name="itemDescription" not-null="true" column="DESCRIPTION"/>
+		<property name="unitPriceWithoutTax" not-null="true" column="PRICE_WITHOUT_TAX"/>
+		<property name="additionalLineItemInformation" column="ADDITIONAL_INFO"/>
+		<property name="unitOfMeasure" column="UNIT"/>
+		<list name="taxesPersistence" table="ITEM_TAX">
+			<key column="ITEM_ID"/>
+			<list-index column="sortOrder"/>
+			<many-to-many class="es.mityc.appfacturae.hibernate.auxClass.Tax" column="TAX_ID"/>
+		</list>
+		<component name="specialTaxableEvent" class="es.mityc.appfacturae.facturae32.SpecialTaxableEventType">
+			<property name="specialTaxableEventCode" column="SPECIAL_TAX_EVENT_CODE"/>
+			<property name="specialTaxableEventReason" column="SPECIAL_TAX_EVENT_REASON"/>
+		</component>
+		<property name="articleCode" column="ARTICLE_CODE"/>
+	</subclass>
+	<subclass name="es.mityc.appfacturae.facturae321.InvoiceLineType" discriminator-value="3.2.1">     
+		<property name="itemDescription" not-null="true" column="DESCRIPTION"/>
+		<property name="unitPriceWithoutTax" not-null="true" column="PRICE_WITHOUT_TAX"/>
+		<property name="additionalLineItemInformation" column="ADDITIONAL_INFO"/>
+		<property name="unitOfMeasure" column="UNIT"/>
+		<list name="taxesPersistence" table="ITEM_TAX">
+			<key column="ITEM_ID"/>
+			<list-index column="sortOrder"/>
+			<many-to-many class="es.mityc.appfacturae.hibernate.auxClass.Tax" column="TAX_ID"/>
+		</list>
+		<component name="specialTaxableEvent" class="es.mityc.appfacturae.facturae321.SpecialTaxableEventType">
+			<property name="specialTaxableEventCode" column="SPECIAL_TAX_EVENT_CODE"/>
+			<property name="specialTaxableEventReason" column="SPECIAL_TAX_EVENT_REASON"/>
+		</component>
+		<property name="articleCode" column="ARTICLE_CODE"/>
+	</subclass>	
+</class>
+
+<class name="es.mityc.appfacturae.hibernate.auxClass.Tax" table="TAX">
+	<id name="id" type="int" column="TAX_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">TAX</param>
+			<param name="column">TAX_ID</param>
+		</generator>
+	</id>
+	<property name="taxTypeCode" not-null="true" column="TYPE"/>
+	<property name="taxRate" not-null="true" column="RATE"/>
+	<property name="equivalenceSurcharge" column="SURCHARGE"/>
+</class>
+
+<!-- Inerza S.A. - 20150312 - Añadir factoring -->
+<class name="es.mityc.appfacturae.facturae.FactoringAssignmentDataType" table="FACTORING">
+    <id name="id" type="int" column="FACTORING_ID">
+        <generator class="org.hibernate.id.IdentityGenerator">
+            <param name="table">FACTORING</param>
+            <param name="column">FACTORING_ID</param>
+        </generator>
+    </id>
+    <discriminator column="VERSION" type="string" not-null="false" insert="false"/>
+	<subclass name="es.mityc.appfacturae.facturae32.FactoringAssignmentDataType" discriminator-value="3.2">
+	    <many-to-one name="assignee" class="es.mityc.appfacturae.facturae.AssigneeType" column="ASSIGNEE"/>
+	    <many-to-one name="invoice" class="es.mityc.appfacturae.facturae.InvoiceType" column="INVOICE_ID"/>
+	    <component name="paymentDetails" class="es.mityc.appfacturae.facturae.InstallmentsType">
+	        <list name="installment" table="INVOICE_FACTORING">
+	            <key column="FACTORING_ID"/>
+	            <list-index column="sortOrder"/>
+	            <many-to-many class="es.mityc.appfacturae.facturae.InstallmentType" column="PAYMENT_ID"/>
+	        </list>
+	    </component>
+	    <property name="factoringAssignmentClauses" column="CLAUSES" />
+	</subclass>
+    <subclass name="es.mityc.appfacturae.facturae321.FactoringAssignmentDataType" discriminator-value="3.2.1">
+        <many-to-one name="assignee" class="es.mityc.appfacturae.facturae.AssigneeType" column="ASSIGNEE"/>
+        <many-to-one name="invoice" class="es.mityc.appfacturae.facturae.InvoiceType" column="INVOICE_ID"/>
+        <component name="paymentDetails" class="es.mityc.appfacturae.facturae.InstallmentsType">
+            <list name="installment" table="INVOICE_FACTORING">
+                <key column="FACTORING_ID"/>
+                <list-index column="sortOrder"/>
+                <many-to-many class="es.mityc.appfacturae.facturae.InstallmentType" column="PAYMENT_ID"/>
+            </list>
+        </component>
+        <property name="factoringAssignmentClauses" column="CLAUSES" />
+    </subclass>
+</class>
+<!-- Inerza S.A. - 20150312 - Añadir factoring -->
+</hibernate-mapping>
+	

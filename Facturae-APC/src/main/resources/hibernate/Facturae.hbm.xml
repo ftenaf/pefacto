@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+
+<class name="es.mityc.appfacturae.facturae.Facturae" table="FACTURAE">
+	<id name="id"  type="int" column="FACTURAE_ID">
+        <generator class="foreign">
+                <param name="property">fileHeader.batch</param>
+        </generator>
+	</id>
+	<component name="fileHeader" class="es.mityc.appfacturae.facturae.FileHeaderType">
+		<property name="schemaVersion" not-null="true" column="SCHEMA_VERSION"/>
+		<property name="modality" not-null="true" column="MODALITY" type="es.mityc.appfacturae.hibernate.userType.EnumModalityType"/>
+		<property name="invoiceIssuerType" not-null="true" column="INVOICE_ISSUER_TYPE" type="es.mityc.appfacturae.hibernate.userType.EnumInvoiceIssuerType"/>
+		<one-to-one cascade="delete"  name="batch" class="es.mityc.appfacturae.facturae.BatchType"/>
+	</component>
+	<component name="parties" class="es.mityc.appfacturae.facturae.PartiesType">
+		<many-to-one name="sellerParty" not-null="true" class="es.mityc.appfacturae.facturae.BusinessType" column="PARTY_ID_SELLER"/>
+		<many-to-one name="buyerParty" not-null="true" class="es.mityc.appfacturae.facturae.BusinessType" column="PARTY_ID_BUYER"/>
+	</component>
+	<component name="invoices" class="es.mityc.appfacturae.facturae.InvoicesType">
+		<list name="invoice" table="FACTURAE_INVOICES">
+			<key column="FACTURAE_ID"/>
+			<list-index column="sortOrder"/>
+			<many-to-many  unique="true" class="es.mityc.appfacturae.facturae.InvoiceType" column="INVOICE_ID"/>
+		</list>
+	</component>
+	<component name="xsig" class="es.mityc.appfacturae.hibernate.auxClass.xmlData">
+		<property name="xsig" not-null="true" column="XML" type="blob"/>
+	</component>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.BatchType" table="BATCH">
+	<id name="id" type="int" column="BATCH_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">BATCH</param>
+			<param name="column">BATCH_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string"/>
+	<subclass name="es.mityc.appfacturae.facturae32.BatchType" discriminator-value="3.2">
+		<property name="batchIdentifier" not-null="true" column="BATCH_IDENTIFIER"/>
+		<property name="invoicesCount" not-null="true" column="INVOICES_COUNT"/>
+		<component name="totalInvoicesAmount" class="es.mityc.appfacturae.facturae.AmountType">
+			<property name="totalAmount" not-null="true" column="TOTAL_INVOICES"/>
+		</component>
+		<component name="totalOutstandingAmount" class="es.mityc.appfacturae.facturae.AmountType">
+			<property name="totalAmount" not-null="true" column="TOTAL_OUTSTANDING"/>
+		</component>
+		<component name="totalExecutableAmount" class="es.mityc.appfacturae.facturae.AmountType">
+			<property name="totalAmount" not-null="true" column="TOTAL_EXECUTABLE"/>
+		</component>
+		<property name="invoiceCurrencyCode" not-null="true" column="INVOICE_CURRENCY_CODE" type="es.mityc.appfacturae.hibernate.userType.EnumCurrency31Type"/>
+	</subclass> 
+</class>
+
+</hibernate-mapping>
+

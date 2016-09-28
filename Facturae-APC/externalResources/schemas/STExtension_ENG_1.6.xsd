@@ -1,0 +1,1704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.facturae.es/Facturae/Extensions/ST" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.facturae.es/Facturae/Extensions/ST">
+	<xs:element name="References" type="ReferencesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Information relating to issuer and receiver references. </xs:documentation>
+			<xs:documentation xml:lang="es"> Información relativa a las referencias del emisor y del receptor de la factura. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AgenciesData" type="AgencyDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Data relating to the Travel Agency that receives the invoice. Data relating to the requesting service office (branch or Agency´s travel agent who carry out the booking) </xs:documentation>
+			<xs:documentation xml:lang="es"> Datos relativos a la Agencia de Viajes receptora de la factura. Datos relativos a la oficina peticionaria del servicio (sucursal o agente de ventas de la Agencia que ha realizado la reserva) </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Commissions" type="CommissionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Accrual commissions to the Travel Agencies due to the service provided. </xs:documentation>
+			<xs:documentation xml:lang="es"> Comisiones devengadas a las Agencias de Viajes por la distribución del servicio. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Service" type="ServiceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Contracted services by the client, including the final customer identity and service features that provide required information in order to justify its invoicing. </xs:documentation>
+			<xs:documentation xml:lang="es"> Servicios contratados por el cliente, incluyendo la identificación del cliente final y los datos del servicio que aportan la información requerida para justificar la facturación del mismo. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ServiceDetails" type="DetailServiceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Detailed data of the service provided. Recommended use level InvoiceLine.</xs:documentation>
+			<xs:documentation xml:lang="es"> Datos detallados del servicio proporcionado. Uso recomendado a nivel de InvoiceLine</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  Complex Types  -->
+	<xs:complexType name="ReferencesType">
+		<xs:sequence>
+			<xs:element name="Voucher" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Voucher number or client identifier. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de bono o identificador de cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Locator" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Provider reference. </xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia del proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgenciesDataType">
+		<xs:sequence>
+			<xs:element name="AgencyData" type="AgencyDataType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Data relating to the Travel Agency. </xs:documentation>
+					<xs:documentation xml:lang="es"> Datos relativos a la Agencia de viajes. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgencyDataType">
+		<xs:sequence>
+			<xs:element name="Type" type="AgencyType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Type: Travel agency or requesting office.</xs:documentation>
+					<xs:documentation xml:lang="es"> Tipo: agencia de viajes u oficina peticionaria.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgentName" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Travel agency seller's name.</xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre del agente vendedor de la Agencia de Viajes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgencyCode" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Requesting office code. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código de la oficina peticionaria. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VATNumber" type="TextMin3Max30Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Travel agency´s tax identification. Travel agency which receives the Hotel or Bookings Head Office invoice. </xs:documentation>
+					<xs:documentation xml:lang="es"> NIF de la Agencia de viajes receptora de la factura del Hotel o Central de Reservas. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgencyName" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Travel agency´s name. </xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre de la agencia de viajes cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgencyAddress" type="STAddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Invoice receiver agency´s address. </xs:documentation>
+					<xs:documentation xml:lang="es"> Dirección postal de la agencia receptora de la factura. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IATACode" type="TextMax10Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Agency´s IATA Code.  </xs:documentation>
+					<xs:documentation xml:lang="es"> Código IATA de la agencia. Sólo para agencia de viajes </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CommissionsType">
+		<xs:sequence>
+			<xs:element name="Commission" type="CommissionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Commission. </xs:documentation>
+					<xs:documentation xml:lang="es"> Comisión. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Amounts" type="AmountsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Invoice amount subjected to commission. Recommended use level InvoiceGeneralData</xs:documentation>
+					<xs:documentation xml:lang="es"> Importes de las facturas sujetos a comisión. Uso recomendado a nivel de InvoiceGeneralData</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CommissionType">
+		<xs:sequence>
+			<xs:element name="RateCommission" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Agency commission rate. Recommended use level InvoiceLine</xs:documentation>
+					<xs:documentation xml:lang="es"> Porcentaje de la comisión de la agencia. Uso recomendado a nivel de InvoiceLine</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BeforeTaxCommision" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Agency commission amount before taxes (EUR). Recommended use level InvoiceLine</xs:documentation>
+					<xs:documentation xml:lang="es"> Importe de la comisión de la agencia antes de impuestos (EUR). Uso recomendado a nivel de InvoiceLine</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxTypeCommission" type="TextMax20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Tax type over the agency commission (VAT,...). Recommended use level InvoiceLine</xs:documentation>
+					<xs:documentation xml:lang="es"> Clase del impuesto sobre la comisión de la agencia (IVA,IGIC,...). Uso recomendado a nivel de InvoiceLine</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxRateCommission" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Tax rate over the agency commission. Recommended use level InvoiceLine.</xs:documentation>
+					<xs:documentation xml:lang="es"> Porcentaje del impuesto sobre la comisión de la agencia. Uso recomendado a nivel de InvoiceLine</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxAmountCommission" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Tax installment over the agency commission (EUR). Recommended use level InvoiceLine.</xs:documentation>
+					<xs:documentation xml:lang="es"> Cuota del impuesto sobre la comisión de la agencia (EUR). Uso recomendado a nivel de InvoiceLine</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalCommission" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Total agency commission (EUR). </xs:documentation>
+					<xs:documentation xml:lang="es"> Comisión neta de la agencia (EUR). </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AmountsType">
+		<xs:sequence>
+			<xs:element name="ComissionableAmount" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Invoice amount subjected to commission. </xs:documentation>
+					<xs:documentation xml:lang="es"> Importe de la factura sujeto a comisión. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NoCommissionableAmount" type="DoubleTwoDecimalType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Invoice amount not subjected to commission. </xs:documentation>
+					<xs:documentation xml:lang="es"> Importe de la factura no sujeto a comisión. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceType">
+		<xs:sequence>
+			<xs:element name="Customer" type="CustomerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Data related with the customer </xs:documentation>
+					<xs:documentation xml:lang="es"> Datos del cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Card" type="CardType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Services invoiced by companies that issue redeemable checks for tourist services (provider issued cards). </xs:documentation>
+					<xs:documentation xml:lang="es"> Servicios facturados por empresas que emiten talones canjeables por servicios turísticos (tarjetas emitidas por el proveedor).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CheckBook" type="CheckBookType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Services invoiced by companies that issue redeemable checks for tourist services (provider issued checkbooks).</xs:documentation>
+					<xs:documentation xml:lang="es"> Servicios facturados por empresas que emiten talones canjeables por servicios turísticos (talonarios emitidos por el proveedor).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BasicDataService" type="BasicDataServiceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Basic data service. </xs:documentation>
+					<xs:documentation xml:lang="es"> Datos básicos del servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalDataService" type="AdditionalDataServiceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Service additional data. </xs:documentation>
+					<xs:documentation xml:lang="es"> Datos adicionales del servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerType">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Client codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos de cliente.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VATNumber" type="TextMin3Max30Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Client identification number. </xs:documentation>
+					<xs:documentation xml:lang="es"> NIF del cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="NameType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Client name. </xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre del cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Age" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Age.</xs:documentation>
+					<xs:documentation xml:lang="es"> Edad.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Treatment" type="TextMax20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Treatment.</xs:documentation>
+					<xs:documentation xml:lang="es"> Trato.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="es"> Descripción.</xs:documentation>
+					<xs:documentation xml:lang="en"> Description.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="STAddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Client address. </xs:documentation>
+					<xs:documentation xml:lang="es"> Dirección del cliente. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CardType">
+		<xs:sequence>
+			<xs:element name="CardNumber" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Reference to the card issued by the provider. </xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia de la tarjeta emitida por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CardCode" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Reference to the card charge made by the provider. </xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia de la carga efectuada en la tarjeta por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Activation date of the card issued by the provider. </xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de la activación de la tarjeta emitida por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ChargingDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Card recharging date. </xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de la recarga efectuada en la tarjeta por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CheckBookType">
+		<xs:sequence>
+			<xs:element name="CheckBookReference" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Reference to the checkbook issued by the provider. </xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia del talonario emitido por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CheckNumber" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Reference to the check or checks issued by the provider. </xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia del talón o talones emitidos por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Checkbook activation date. </xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de la activación del talonario emitido por el proveedor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BasicDataServiceType">
+		<xs:sequence>
+			<xs:element name="ServiceType" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Invoiced service type (Plane Ticket, Hotel, Park, Relocation,...) </xs:documentation>
+					<xs:documentation xml:lang="es"> Identificación del tipo de servicio facturado (Billete Aéreo, Hotel, Paquete turístico, Traslado,...) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dates" type="DatesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Dates and hours of service </xs:documentation>
+					<xs:documentation xml:lang="es"> Fechas y horas del servicio </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Origin" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip departure. </xs:documentation>
+					<xs:documentation xml:lang="es"> Origen del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Destination" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip destination. </xs:documentation>
+					<xs:documentation xml:lang="es"> Destino del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Paxes" type="PaxesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Passengers </xs:documentation>
+					<xs:documentation xml:lang="es"> Pasajeros </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalDataServiceType">
+		<xs:sequence>
+			<xs:element name="Route" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Service Route. </xs:documentation>
+					<xs:documentation xml:lang="es"> Ruta del servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceCategory" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Service type (tickets, plane, train,...) </xs:documentation>
+					<xs:documentation xml:lang="es"> Clase del servicio (billetes, aéreos, ferroviairios,...) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParkOrderNumber" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Park order number. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de pedido del Parque. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Product" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Product or service description. </xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción del producto o servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductCode" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Product or service code. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código del producto o servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubProduct" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Subproduct or subservice description. </xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción del subproducto o servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubProductCode" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Subproduct or subservice code. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código del subproducto o servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DetailServiceType">
+		<xs:sequence>
+			<xs:element name="Hotel" type="HotelType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel service details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de servicio de hotel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RentACar" type="RentACarType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Rent-a-car service details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de servicio de alquiler de vehículos.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NauticalServices" type="NauticalServicesType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Nautical services details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de servicios náuticos.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AirTransport" type="AirTransportType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Air transport service details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de servicio de transporte aéreo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AirTransportType">
+		<xs:sequence>
+			<xs:element name="Season" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Flight season. Examples: S09 (Summer 2009), W09/10 (Winter 2009/2010), S10 (Summer 2010), W10/11 (Winter 2010/2011).</xs:documentation>
+					<xs:documentation xml:lang="es"> Temporada de vuelo. Ejemplos: S09 (Summer 2009), W09/10 (Winter 2009/2010), S10 (Summer 2010), W10/11 (Winter 2010/2011).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Contract" type="TextMax20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Contract reference associted to the invoice.</xs:documentation>
+					<xs:documentation xml:lang="es"> Referencia de contrato asociado a la factura.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Annex" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Annex to the contract.</xs:documentation>
+					<xs:documentation xml:lang="es"> Anexo al contrato.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Modification" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Modifications to the contract.</xs:documentation>
+					<xs:documentation xml:lang="es"> Modificaciones al contrato.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RotationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Rotation date.</xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de rotación.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Route" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Contracted route. Example: PMI - MAD - BCN - PMI </xs:documentation>
+					<xs:documentation xml:lang="es"> Ruta contratada. Ejemplo: PMI - MAD - BCN - PMI </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FlightNumber" type="TextMax20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Flight number.</xs:documentation>
+					<xs:documentation xml:lang="es"> Número de vuelo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContractedFleet" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Contracted fleet. Example: A320-200</xs:documentation>
+					<xs:documentation xml:lang="es"> Flota contratada. Ejemplo: A320-200</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Remarks" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Annotations to the contract.</xs:documentation>
+					<xs:documentation xml:lang="es"> Anotaciones al contrato.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NauticalServicesType">
+		<xs:sequence>
+			<xs:element name="NauticalServiceTypeCodes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Nautical service codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos de servicio náutico.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NauticalServiceTypeName" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Nautical service type name.</xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre del tipo de servicio náutico.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MooringID" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Mooring indentification.</xs:documentation>
+					<xs:documentation xml:lang="es"> Identificación de amarre(s).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BoatName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Boat name.</xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre de la embarcación.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TextMax80Type">
+							<xs:attribute name="boatID" type="TextMax20Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en"> Boat identification.</xs:documentation>
+									<xs:documentation xml:lang="es"> Matrícula de embarcación.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Codes">
+		<xs:sequence>
+			<xs:element name="Issuer" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Issuer code.</xs:documentation>
+					<xs:documentation xml:lang="es"> Código expedido por el emisor.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Receiver" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Receiver code.</xs:documentation>
+					<xs:documentation xml:lang="es"> Código expedido por el receptor.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Global" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Code shared by issuer and receiver (global code).</xs:documentation>
+					<xs:documentation xml:lang="es"> Código compartido por el emisor y el receptor (código global).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RentACarType">
+		<xs:sequence>
+			<xs:element name="CarRental" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Car rental details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles del alquiler de vehículo.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType mixed="false">
+					<xs:complexContent mixed="false">
+						<xs:extension base="CarRental"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Excesses" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Identification and description of excesses.</xs:documentation>
+					<xs:documentation xml:lang="es"> Indentificación y descripción de franquicia(s).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Excess">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Identification and description of excess.</xs:documentation>
+								<xs:documentation xml:lang="es"> Indentificación y descripción de franquicia.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Codes" type="Codes">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Excess codes.</xs:documentation>
+											<xs:documentation xml:lang="es"> Códigos de franquicia.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Excess description.</xs:documentation>
+											<xs:documentation xml:lang="es"> Descripción de la franquicia.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Supplements" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Car rental supplements.</xs:documentation>
+					<xs:documentation xml:lang="es"> Suplementos del alquiler de vehículo.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Supplement">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car rental supplement.</xs:documentation>
+								<xs:documentation xml:lang="es"> Suplemento del alquiler de vehículo.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="TextMax150Type">
+										<xs:attribute name="type" type="SupplementType" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"> Supplement type: O = Offer, R = Rappel, S = Supplement, Re = Reductions, Ce = Extra charge.</xs:documentation>
+												<xs:documentation xml:lang="es"> Tipo de suplemento: O = Oferta, R = Rappel, S = Suplemento, Re = Reducciones, Ce = Cargo extra.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="SupplementType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">O = Offer, R = Rappel, S = Supplement, Re = Reductions, Ce = Extra charge</xs:documentation>
+			<xs:documentation xml:lang="es">O = Oferta, R = Rappel, S = Suplemento, Re = Reducciones, Ce = Cargo extra</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="Re"/>
+			<xs:enumeration value="Ce"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CarRental">
+		<xs:sequence>
+			<xs:element name="Dates" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Car rental period.</xs:documentation>
+					<xs:documentation xml:lang="es"> Período de alquiler de vehículo.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PickupDate" type="xs:dateTime">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car pickup date.</xs:documentation>
+								<xs:documentation xml:lang="es"> Fecha de recogida de vehículo.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReturnDate" type="xs:dateTime">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car return date.</xs:documentation>
+								<xs:documentation xml:lang="es"> Fecha de devolución de vehículo.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Days" type="xs:nonNegativeInteger">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Number of days of rental.</xs:documentation>
+								<xs:documentation xml:lang="es"> Número de días de alquiler.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Stations" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Car pickup and return stations.</xs:documentation>
+					<xs:documentation xml:lang="es"> Puntos de recogida y devolución del vehículo (estaciones).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PickupStation">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car pickup station.</xs:documentation>
+								<xs:documentation xml:lang="es"> Punto/estación de recogida del vehículo.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="TextMax150Type">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Pickup station description and how to get there.</xs:documentation>
+											<xs:documentation xml:lang="es"> Descripción de la estación de recogida y cómo llegar.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Address" type="STAddressType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Pickup station address.</xs:documentation>
+											<xs:documentation xml:lang="es"> Dirección de la estación de recogida.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ReturnStation">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car return station.</xs:documentation>
+								<xs:documentation xml:lang="es"> Punto/estación de devolución del vehículo.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="TextMax150Type">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Return station description and how to get there.</xs:documentation>
+											<xs:documentation xml:lang="es"> Descripción de la estación de devolución y cómo llegar.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Address" type="STAddressType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Return station address.</xs:documentation>
+											<xs:documentation xml:lang="es"> Dirección de la estación de devolución.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CarModel" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Car model.</xs:documentation>
+					<xs:documentation xml:lang="es"> Modelo de vehículo.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Codes" type="Codes">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car model codes. The 'Global' element will be filled in with the ACRISS Car Classification Code, http://www.acriss.org/reference </xs:documentation>
+								<xs:documentation xml:lang="es"> Códigos de modelo de vehículo. En el elemento 'Global' se incluirá el código ACRISS de clasificación de vehículos, http://www.acriss.org/reference </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car model description.</xs:documentation>
+								<xs:documentation xml:lang="es"> Descripción del modelo de vehículo.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Provider" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Provider codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos del proveedor.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType mixed="false">
+					<xs:complexContent mixed="false">
+						<xs:extension base="Codes"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Drivers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Drivers identification.</xs:documentation>
+					<xs:documentation xml:lang="es"> Identificación de conductor(es).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Driver">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Driver identification.</xs:documentation>
+								<xs:documentation xml:lang="es"> Identificación del conductor.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FirstName" type="TextMax40Type">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Driver's first name.</xs:documentation>
+											<xs:documentation xml:lang="es"> Nombre del conductor.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="LastName" type="TextMax40Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Driver's last name.</xs:documentation>
+											<xs:documentation xml:lang="es"> Apellidos del conductor.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="BirthDate" type="xs:date" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Driver's birth date.</xs:documentation>
+											<xs:documentation xml:lang="es"> Fecha de nacimiento del conductor.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="License" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Valid driver license.</xs:documentation>
+											<xs:documentation xml:lang="es"> Licencia/permiso de conducir vigente.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Country" type="TextMax40Type" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en"> Expedition country.</xs:documentation>
+														<xs:documentation xml:lang="es"> País que expide la licencia.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="IssueDate" type="xs:date" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en"> Expedition date of the driver license.</xs:documentation>
+														<xs:documentation xml:lang="es"> Fecha de expedición de la licencia/permiso de conducir.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="number" type="xs:string" use="required">
+												<xs:annotation>
+													<xs:documentation xml:lang="en"> License number.</xs:documentation>
+													<xs:documentation xml:lang="es"> Número de licencia.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Extras" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="es"> Descripción y cantidad de extras del vehículo.</xs:documentation>
+					<xs:documentation xml:lang="en"> Car extras description and quantity.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Extra">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Car extra description and quantity.</xs:documentation>
+								<xs:documentation xml:lang="es"> Descripción del extra de vehículo y cantidad.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Codes" type="Codes" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Car extra type codes.</xs:documentation>
+											<xs:documentation xml:lang="es"> Códigos del tipo de extra de vehículo.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Car extra description.</xs:documentation>
+											<xs:documentation xml:lang="es"> Descripción del extra de vehículo.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Quantity" type="xs:nonNegativeInteger" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Quantity of car extras of the indicated type.</xs:documentation>
+											<xs:documentation xml:lang="es"> Cantidad de extras de vehículo del tipo indicado.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Insurances" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Insurances details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de seguro(s) de responsabilidad o similar(es).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Insurance">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Insurance details.</xs:documentation>
+								<xs:documentation xml:lang="es"> Detalles del seguro.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Codes" type="Codes" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Insurance type codes.</xs:documentation>
+											<xs:documentation xml:lang="es"> Códigos del tipo de seguro.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Insurance description.</xs:documentation>
+											<xs:documentation xml:lang="es"> Descripción del seguro.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Quantity" type="xs:nonNegativeInteger" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Quantity.</xs:documentation>
+											<xs:documentation xml:lang="es"> Cantidad.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="orderDate" type="xs:dateTime" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en"> Order date of car rental.</xs:documentation>
+				<xs:documentation xml:lang="es"> Fecha de la orden de alquiler de vehículo.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="HotelType">
+		<xs:sequence>
+			<xs:element name="References" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Element to include other references associated to the invoice: booking code.</xs:documentation>
+					<xs:documentation xml:lang="es"> Elemento para incluir otras referencias asociadas a la factura: código de reserva.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HotelBookingReference" type="TextMax80Type">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Booking code.</xs:documentation>
+								<xs:documentation xml:lang="es"> Código de reserva.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Bookings" type="Bookings" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Element to include booking(s) details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Elemento para incluir detalles de reserva(s).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Supplement" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Supplement details, as offers, rappels, reductions and extra charges.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de suplemento, como ofertas, rappels, reducciones y cargos extra.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Codes" type="Codes" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Supplement codes.</xs:documentation>
+								<xs:documentation xml:lang="es"> Códigos del suplemento.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Type" type="SupplementType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Supplement type: O = Offer, R = Rappel, S = Supplement, Re = Reductions, Ce = Extra charge.</xs:documentation>
+								<xs:documentation xml:lang="es"> Tipo de suplemento: O = Oferta, R = Rappel, S = Suplemento, Re = Reducciones, Ce = Cargo extra.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Supplement description.</xs:documentation>
+								<xs:documentation xml:lang="es"> Descripción del suplemento.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Dates" type="STPeriodDates" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Supplement dates.</xs:documentation>
+								<xs:documentation xml:lang="es"> Fechas del suplemento.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Paxes" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Occupant types and number of occupants.</xs:documentation>
+								<xs:documentation xml:lang="es"> Tipos y número de ocupantes.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Pax" type="Pax" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation xml:lang="en"> Occupant type and number of occupants.</xs:documentation>
+											<xs:documentation xml:lang="es"> Tipo y número de ocupantes.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Department" type="HotelDepartment" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Department that provides the supplement.</xs:documentation>
+								<xs:documentation xml:lang="es"> Departamento que proporciona el suplemento.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HotelDetails" type="HotelDataType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel data.</xs:documentation>
+					<xs:documentation xml:lang="es"> Datos del hotel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CodeLine" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Current invoice line code.</xs:documentation>
+					<xs:documentation xml:lang="es"> Código de línea factura en curso.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParentCodeLine" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Parent invoice line code associated to the current invoice line.</xs:documentation>
+					<xs:documentation xml:lang="es"> Código de línea factura padre asociado a la línea factura en curso.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelDepartment">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Department codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos de departamento.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Department description.</xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción del departamento.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Hotel" type="HotelDataType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel data.</xs:documentation>
+					<xs:documentation xml:lang="es"> Datos del hotel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Pax">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Occupant type codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos del tipo de ocupante.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Occupant type description.</xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción del tipo de ocupante.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Quantity" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Quantity of occupants.</xs:documentation>
+					<xs:documentation xml:lang="es"> Cantidad de ocupantes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="STPeriodDates">
+		<xs:sequence>
+			<xs:element name="StartDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Start date. ISO 8601:2004.</xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de inicio. ISO 8601:2004.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> End date. ISO 8601:2004.</xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de fin. ISO 8601:2004.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Bookings">
+		<xs:sequence>
+			<xs:element name="Booking" type="Booking" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Booking details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de reserva.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Booking">
+		<xs:sequence>
+			<xs:element name="Paxes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Number of persons of each occupant type.</xs:documentation>
+					<xs:documentation xml:lang="es"> Número de personas de cada tipo de ocupante.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pax" type="Pax" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Number of persons of one occupant type.</xs:documentation>
+								<xs:documentation xml:lang="es"> Número de personas de un tipo de ocupante.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Guests" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Data of guests.</xs:documentation>
+					<xs:documentation xml:lang="es"> Datos de los huéspedes.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Guest" type="CustomerType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Data of guest.</xs:documentation>
+								<xs:documentation xml:lang="es"> Datos de huésped.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Room" type="RoomType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Room details.</xs:documentation>
+					<xs:documentation xml:lang="es"> Detalles de la habitación.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nights" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Number of nights stayed in the hotel. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de noches de pernoctación en el hotel. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dates" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Dates of stay in the hotel.</xs:documentation>
+					<xs:documentation xml:lang="es"> Fechas de estancia en el hotel.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CheckIn" type="xs:date" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Hotel services starting date. </xs:documentation>
+								<xs:documentation xml:lang="es"> Fecha de inicio de los servicios del hotel. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CheckOut" type="xs:date" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Hotel services ending date. </xs:documentation>
+								<xs:documentation xml:lang="es"> Fecha de finalización de los servicios del hotel. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CheckInTime" type="xs:time" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Hotel services starting time. </xs:documentation>
+								<xs:documentation xml:lang="es"> Hora de inicio de los servicios del hotel. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CheckOutTime" type="xs:time" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Hotel services ending time. </xs:documentation>
+								<xs:documentation xml:lang="es"> Hora de finalización de los servicios del hotel. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Rates" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Associated rates to the booking.</xs:documentation>
+					<xs:documentation xml:lang="es"> Tarifa(s) asociada(s) a la reserva.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Rate" type="Rate" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Associated rate to the booking.</xs:documentation>
+								<xs:documentation xml:lang="es"> Tarifa asociada a la reserva.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Board" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Board type (Only Accommodation, Half Board, Full Board, All Inclusive).</xs:documentation>
+					<xs:documentation xml:lang="es"> Tipo de régimen (Sólo Alojamiento, Media Pensión, Pensión Completa, Todo Incluido).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Codes" type="Codes">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Board type codes.</xs:documentation>
+								<xs:documentation xml:lang="es"> Códigos del tipo de régimen.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en"> Board description.</xs:documentation>
+								<xs:documentation xml:lang="es"> Descripción del régimen.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Status" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Booking status.</xs:documentation>
+					<xs:documentation xml:lang="es"> Estado de la reserva.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelDataType">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos del hotel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VATNumber" type="TextMin3Max30Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel identification number. </xs:documentation>
+					<xs:documentation xml:lang="es"> CIF del hotel. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HotelCode" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel code. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código del hotel. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HotelName" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel trade name. </xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre comercial del hotel. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HotelAddress" type="STAddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Service provider hotel´s address. </xs:documentation>
+					<xs:documentation xml:lang="es"> Dirección del hotel proveedor del servicio. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel description.</xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción del hotel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Category" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Hotel category in accordance to the current legislation.</xs:documentation>
+					<xs:documentation xml:lang="es"> Categoría del establecimiento de hostelería de acuerdo a la legislación vigente.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="STAddressType">
+		<xs:sequence>
+			<xs:element name="Address" type="TextMax80Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Street name, number, flat...</xs:documentation>
+					<xs:documentation xml:lang="es"> Dirección. Tipo de vía, nombre, número, piso...</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PostCode" type="PostCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Postcode allocated by the Post Office. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código Postal asignado por Correos.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Town" type="TextMax50Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Town corresponding to the postcode  </xs:documentation>
+					<xs:documentation xml:lang="es"> Población. Correspondiente al C.P.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Province" type="TextMax20Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Province where the town is located. </xs:documentation>
+					<xs:documentation xml:lang="es"> Provincia. Donde está situada la Población.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CountryCode" type="STCountryType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> ISO 3166-1:2006 Alpha-3 code. Since the address is located in Spain, it will always be “ESP”. </xs:documentation>
+					<xs:documentation xml:lang="es"> Código País. Código según la ISO 3166-1:2006 Alpha-3. Al ser un domicilio ubicado en España siempre será "ESP".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomsType">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="RoomType">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Room type codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos del tipo de habitación.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Room description.</xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción de la habitación.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Number" type="TextMax10Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Room number. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de habitación. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoomClass" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Room type booked in the hotel (Private, Double, Twin,...) </xs:documentation>
+					<xs:documentation xml:lang="es"> Tipo de habitación reservada en el hotel (Individual, Doble, Triple,...) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Rate">
+		<xs:sequence>
+			<xs:element name="Codes" type="Codes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Rate codes.</xs:documentation>
+					<xs:documentation xml:lang="es"> Códigos de tarifa.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Rate description.</xs:documentation>
+					<xs:documentation xml:lang="es"> Descripción de tarifa.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DatesType">
+		<xs:sequence>
+			<xs:element name="StartDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip starting date. </xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de inicio del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip ending date. </xs:documentation>
+					<xs:documentation xml:lang="es"> Fecha de finalización del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip starting time. </xs:documentation>
+					<xs:documentation xml:lang="es"> Hora de inicio del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Trip ending time. </xs:documentation>
+					<xs:documentation xml:lang="es"> Hora de finalización del viaje. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaxesType">
+		<xs:sequence>
+			<xs:element name="Pax" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Number of passengers. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de pasajeros. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaxLeader" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Client's name  that identify the group when several passengers are involved. </xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre del Cliente que identifica el grupo en caso de multiples plazas. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaxLiderCode" type="TextMax150Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> PaxLider identifier. </xs:documentation>
+					<xs:documentation xml:lang="es"> Identificador del PaxLider. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdultPax" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Number of adults. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de personas adultas. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ChildPax" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Number of children. </xs:documentation>
+					<xs:documentation xml:lang="es"> Número de niños. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NameType">
+		<xs:sequence>
+			<xs:element name="FirstName" type="TextMax40Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Name.</xs:documentation>
+					<xs:documentation xml:lang="es"> Nombre.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastName" type="TextMax40Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Last name.</xs:documentation>
+					<xs:documentation xml:lang="es"> Apellidos.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AgencyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="es">AV = Agencia de viajes, OP = Oficina Peticionaria</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AV"/>
+			<xs:enumeration value="OP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Text Types -->
+	<xs:simpleType name="TextMax3Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax10Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax20Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax40Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax50Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax80Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMax150Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TextMin3Max30Type">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Numeric Types -->
+	<xs:simpleType name="PostCodeType">
+		<xs:restriction base="xs:string">
+			<xs:length value="5"/>
+			<xs:pattern value="[0-9]*">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Only numeric characters allowed.</xs:documentation>
+					<xs:documentation xml:lang="es">Sólo se permiten caracteres numéricos.</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoubleTwoDecimalType">
+		<xs:restriction base="xs:double">
+			<xs:pattern value="[0-9][0-9]*\.[0-9]{2}|-[0-9][0-9]*\.[0-9]{2}">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Always to two decimal places.</xs:documentation>
+					<xs:documentation xml:lang="es">Siempre con dos decimales.</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STCountryType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AFG"/>
+			<xs:enumeration value="ALB"/>
+			<xs:enumeration value="DZA"/>
+			<xs:enumeration value="ASM"/>
+			<xs:enumeration value="AND"/>
+			<xs:enumeration value="AGO"/>
+			<xs:enumeration value="AIA"/>
+			<xs:enumeration value="ATG"/>
+			<xs:enumeration value="ARG"/>
+			<xs:enumeration value="ARM"/>
+			<xs:enumeration value="ABW"/>
+			<xs:enumeration value="AUS"/>
+			<xs:enumeration value="AUT"/>
+			<xs:enumeration value="AZE"/>
+			<xs:enumeration value="BHS"/>
+			<xs:enumeration value="BHR"/>
+			<xs:enumeration value="BGD"/>
+			<xs:enumeration value="BRB"/>
+			<xs:enumeration value="BLR"/>
+			<xs:enumeration value="BEL"/>
+			<xs:enumeration value="BLZ"/>
+			<xs:enumeration value="BEN"/>
+			<xs:enumeration value="BMU"/>
+			<xs:enumeration value="BTN"/>
+			<xs:enumeration value="BOL"/>
+			<xs:enumeration value="BIH"/>
+			<xs:enumeration value="BWA"/>
+			<xs:enumeration value="BRA"/>
+			<xs:enumeration value="BRN"/>
+			<xs:enumeration value="BGR"/>
+			<xs:enumeration value="BFA"/>
+			<xs:enumeration value="BDI"/>
+			<xs:enumeration value="KHM"/>
+			<xs:enumeration value="CMR"/>
+			<xs:enumeration value="CAN"/>
+			<xs:enumeration value="CPV"/>
+			<xs:enumeration value="CYM"/>
+			<xs:enumeration value="CAF"/>
+			<xs:enumeration value="TCD"/>
+			<xs:enumeration value="CHL"/>
+			<xs:enumeration value="CHN"/>
+			<xs:enumeration value="COD"/>
+			<xs:enumeration value="COL"/>
+			<xs:enumeration value="COM"/>
+			<xs:enumeration value="COG"/>
+			<xs:enumeration value="COK"/>
+			<xs:enumeration value="CRI"/>
+			<xs:enumeration value="CIV"/>
+			<xs:enumeration value="HRV"/>
+			<xs:enumeration value="CUB"/>
+			<xs:enumeration value="CYP"/>
+			<xs:enumeration value="CZE"/>
+			<xs:enumeration value="DNK"/>
+			<xs:enumeration value="DJI"/>
+			<xs:enumeration value="DMA"/>
+			<xs:enumeration value="DOM"/>
+			<xs:enumeration value="ECU"/>
+			<xs:enumeration value="EGY"/>
+			<xs:enumeration value="SLV"/>
+			<xs:enumeration value="GNQ"/>
+			<xs:enumeration value="ERI"/>
+			<xs:enumeration value="EST"/>
+			<xs:enumeration value="ETH"/>
+			<xs:enumeration value="FLK"/>
+			<xs:enumeration value="FRO"/>
+			<xs:enumeration value="FJI"/>
+			<xs:enumeration value="FIN"/>
+			<xs:enumeration value="FRA"/>
+			<xs:enumeration value="GUF"/>
+			<xs:enumeration value="PYF"/>
+			<xs:enumeration value="GAB"/>
+			<xs:enumeration value="GMB"/>
+			<xs:enumeration value="GEO"/>
+			<xs:enumeration value="GGY"/>
+			<xs:enumeration value="DEU"/>
+			<xs:enumeration value="GHA"/>
+			<xs:enumeration value="GIB"/>
+			<xs:enumeration value="GRC"/>
+			<xs:enumeration value="GRL"/>
+			<xs:enumeration value="GRD"/>
+			<xs:enumeration value="GLP"/>
+			<xs:enumeration value="GUM"/>
+			<xs:enumeration value="GTM"/>
+			<xs:enumeration value="GIN"/>
+			<xs:enumeration value="GNB"/>
+			<xs:enumeration value="GUY"/>
+			<xs:enumeration value="HTI"/>
+			<xs:enumeration value="HND"/>
+			<xs:enumeration value="HKG"/>
+			<xs:enumeration value="HUN"/>
+			<xs:enumeration value="ISL"/>
+			<xs:enumeration value="IND"/>
+			<xs:enumeration value="IDN"/>
+			<xs:enumeration value="IMN"/>
+			<xs:enumeration value="IRN"/>
+			<xs:enumeration value="IRQ"/>
+			<xs:enumeration value="IRL"/>
+			<xs:enumeration value="ISR"/>
+			<xs:enumeration value="ITA"/>
+			<xs:enumeration value="JAM"/>
+			<xs:enumeration value="JEY"/>
+			<xs:enumeration value="JPN"/>
+			<xs:enumeration value="JOR"/>
+			<xs:enumeration value="KAZ"/>
+			<xs:enumeration value="KEN"/>
+			<xs:enumeration value="KIR"/>
+			<xs:enumeration value="PRK"/>
+			<xs:enumeration value="KOR"/>
+			<xs:enumeration value="KWT"/>
+			<xs:enumeration value="KGZ"/>
+			<xs:enumeration value="LAO"/>
+			<xs:enumeration value="LVA"/>
+			<xs:enumeration value="LBN"/>
+			<xs:enumeration value="LSO"/>
+			<xs:enumeration value="LBR"/>
+			<xs:enumeration value="LBY"/>
+			<xs:enumeration value="LIE"/>
+			<xs:enumeration value="LTU"/>
+			<xs:enumeration value="LUX"/>
+			<xs:enumeration value="MAC"/>
+			<xs:enumeration value="MKD"/>
+			<xs:enumeration value="MDG"/>
+			<xs:enumeration value="MWI"/>
+			<xs:enumeration value="MYS"/>
+			<xs:enumeration value="MDV"/>
+			<xs:enumeration value="MLI"/>
+			<xs:enumeration value="MLT"/>
+			<xs:enumeration value="MHL"/>
+			<xs:enumeration value="MTQ"/>
+			<xs:enumeration value="MRT"/>
+			<xs:enumeration value="MUS"/>
+			<xs:enumeration value="MYT"/>
+			<xs:enumeration value="MEX"/>
+			<xs:enumeration value="FSM"/>
+			<xs:enumeration value="MDA"/>
+			<xs:enumeration value="MCO"/>
+			<xs:enumeration value="MNE"/>
+			<xs:enumeration value="MNG"/>
+			<xs:enumeration value="MSR"/>
+			<xs:enumeration value="MAR"/>
+			<xs:enumeration value="MOZ"/>
+			<xs:enumeration value="MMR"/>
+			<xs:enumeration value="NAM"/>
+			<xs:enumeration value="NRU"/>
+			<xs:enumeration value="NPL"/>
+			<xs:enumeration value="NLD"/>
+			<xs:enumeration value="ANT"/>
+			<xs:enumeration value="NCL"/>
+			<xs:enumeration value="NZL"/>
+			<xs:enumeration value="NIC"/>
+			<xs:enumeration value="NER"/>
+			<xs:enumeration value="NGA"/>
+			<xs:enumeration value="NIU"/>
+			<xs:enumeration value="NFK"/>
+			<xs:enumeration value="MNP"/>
+			<xs:enumeration value="NOR"/>
+			<xs:enumeration value="OMN"/>
+			<xs:enumeration value="PAK"/>
+			<xs:enumeration value="PLW"/>
+			<xs:enumeration value="PAN"/>
+			<xs:enumeration value="PNG"/>
+			<xs:enumeration value="PRY"/>
+			<xs:enumeration value="PSE"/>
+			<xs:enumeration value="PER"/>
+			<xs:enumeration value="PHL"/>
+			<xs:enumeration value="PCN"/>
+			<xs:enumeration value="POL"/>
+			<xs:enumeration value="PRT"/>
+			<xs:enumeration value="PRI"/>
+			<xs:enumeration value="QAT"/>
+			<xs:enumeration value="REU"/>
+			<xs:enumeration value="ROU"/>
+			<xs:enumeration value="RUS"/>
+			<xs:enumeration value="RWA"/>
+			<xs:enumeration value="KNA"/>
+			<xs:enumeration value="LCA"/>
+			<xs:enumeration value="VCT"/>
+			<xs:enumeration value="WSM"/>
+			<xs:enumeration value="SMR"/>
+			<xs:enumeration value="STP"/>
+			<xs:enumeration value="SAU"/>
+			<xs:enumeration value="SEN"/>
+			<xs:enumeration value="SRB"/>
+			<xs:enumeration value="SYC"/>
+			<xs:enumeration value="SLE"/>
+			<xs:enumeration value="SGP"/>
+			<xs:enumeration value="SVK"/>
+			<xs:enumeration value="SVN"/>
+			<xs:enumeration value="SLB"/>
+			<xs:enumeration value="SOM"/>
+			<xs:enumeration value="ZAF"/>
+			<xs:enumeration value="ESP"/>
+			<xs:enumeration value="LKA"/>
+			<xs:enumeration value="SHN"/>
+			<xs:enumeration value="SPM"/>
+			<xs:enumeration value="SDN"/>
+			<xs:enumeration value="SUR"/>
+			<xs:enumeration value="SJM"/>
+			<xs:enumeration value="SWZ"/>
+			<xs:enumeration value="SWE"/>
+			<xs:enumeration value="CHE"/>
+			<xs:enumeration value="SYR"/>
+			<xs:enumeration value="TWN"/>
+			<xs:enumeration value="TJK"/>
+			<xs:enumeration value="TZA"/>
+			<xs:enumeration value="THA"/>
+			<xs:enumeration value="TGO"/>
+			<xs:enumeration value="TKL"/>
+			<xs:enumeration value="TON"/>
+			<xs:enumeration value="TTO"/>
+			<xs:enumeration value="TUN"/>
+			<xs:enumeration value="TUR"/>
+			<xs:enumeration value="TKM"/>
+			<xs:enumeration value="TLS"/>
+			<xs:enumeration value="TCA"/>
+			<xs:enumeration value="TUV"/>
+			<xs:enumeration value="UGA"/>
+			<xs:enumeration value="UKR"/>
+			<xs:enumeration value="ARE"/>
+			<xs:enumeration value="GBR"/>
+			<xs:enumeration value="USA"/>
+			<xs:enumeration value="URY"/>
+			<xs:enumeration value="UZB"/>
+			<xs:enumeration value="VUT"/>
+			<xs:enumeration value="VAT"/>
+			<xs:enumeration value="VEN"/>
+			<xs:enumeration value="VNM"/>
+			<xs:enumeration value="VGB"/>
+			<xs:enumeration value="VIR"/>
+			<xs:enumeration value="WLF"/>
+			<xs:enumeration value="ESH"/>
+			<xs:enumeration value="YEM"/>
+			<xs:enumeration value="ZAR"/>
+			<xs:enumeration value="ZMB"/>
+			<xs:enumeration value="ZWE"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

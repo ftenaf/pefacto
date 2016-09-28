@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+
+<class name="es.mityc.appfacturae.facturae.BusinessType" table="PARTY">
+	<!-- partyIdentification = PARTY_ID -->
+	<id name="id" type="int" column="PARTY_ID">
+        <generator class="foreign">
+			<param name="property">generalEntity</param>
+		</generator>
+	</id>
+	<many-to-one name="taxIdentification" class="es.mityc.appfacturae.facturae.TaxIdentificationType" column="TAX_IDENTIFICATION"/>
+	<!-- It contains LegalEntity or Individual depending on which one is not null -->
+	<one-to-one cascade="all" name="generalEntity" class="es.mityc.appfacturae.facturae.Entity"/>
+	<!--  Administrative Centres are taken into account -->
+	<component name="administrativeCentres" class="es.mityc.appfacturae.facturae.AdministrativeCentresType">
+		<list name="administrativeCentre" table="PARTY_ADMCENTRE">
+			<key column="PARTY_ID"/>
+			<list-index column="sortOrder"/>
+			<many-to-many class="es.mityc.appfacturae.facturae.AdministrativeCentreType" column="ADMCENTRE_ID"/>
+		</list>
+	</component>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.AdministrativeCentreType" table="ADMCENTRE">
+	<id name="id" type="int" column="ADMCENTRE_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">ADMCENTRE</param>
+			<param name="column">ADMCENTRE_ID</param>
+		</generator>
+	</id>
+	<discriminator column="VERSION" type="string" not-null="false" insert="false"/>
+	<subclass name="es.mityc.appfacturae.facturae32.AdministrativeCentreType" discriminator-value="3.2">
+		<property name="centreCode" column="CENTRE_CODE"/>
+		<property name="roleTypeCode" column="ROLE_TYPE_CODE"/>
+		<property name="name" column="NAME"/>
+		<property name="firstSurname" column="FIRST_SURNAME"/>
+		<property name="secondSurname" column="SECOND_SURNAME"/>
+		<many-to-one name="generalAddress" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<many-to-one name="contactDetails" column="CONTACT" class="es.mityc.appfacturae.facturae.ContactDetailsType"/>
+		<property name="physicalGLN" column="PHYSICAL_GLN"/>
+		<property name="logicalOperationalPoint" column="LOGICAL_OPERATION_POINT"/>
+		<property name="centreDescription" column="CENTRE_DESCRIPTION"/>
+	</subclass> 
+	<subclass name="es.mityc.appfacturae.facturae321.AdministrativeCentreType" discriminator-value="3.2.1">
+		<property name="centreCode" column="CENTRE_CODE"/>
+		<property name="roleTypeCode" column="ROLE_TYPE_CODE"/>
+		<property name="name" column="NAME"/>
+		<property name="firstSurname" column="FIRST_SURNAME"/>
+		<property name="secondSurname" column="SECOND_SURNAME"/>
+		<many-to-one name="generalAddress" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<many-to-one name="contactDetails" column="CONTACT" class="es.mityc.appfacturae.facturae.ContactDetailsType"/>
+		<property name="physicalGLN" column="PHYSICAL_GLN"/>
+		<property name="logicalOperationalPoint" column="LOGICAL_OPERATION_POINT"/>
+		<property name="centreDescription" column="CENTRE_DESCRIPTION"/>
+	</subclass>	
+</class>
+
+<class name="es.mityc.appfacturae.facturae.TaxIdentificationType" table="TAX_IDENTIFICATION">
+	<id name="taxIdentificationNumber" column="TAX_ID_NUMBER"/>
+	<property name="personTypeCode" column="PERSON_TYPE" type="es.mityc.appfacturae.hibernate.userType.EnumPersonType"/>
+	<property name="residenceTypeCode" column="RESIDENCE_TYPE" type="es.mityc.appfacturae.hibernate.userType.EnumResidenceType"/>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.Entity" abstract="true">
+	<id name="id" type="int" column="PARTY_ID"></id>
+	<union-subclass name="es.mityc.appfacturae.facturae.IndividualType" table="INDIVIDUAL">
+		<property name="name" not-null="true" column="NAME"/>
+		<property name="firstSurname" not-null="true" column="FIRST_SURNAME"/>
+		<property name="secondSurname" column="SECOND_SURNAME"/>
+		<many-to-one name="generalAddress" not-null="true" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<many-to-one name="contactDetails" column="CONTACT" class="es.mityc.appfacturae.facturae.ContactDetailsType"/>
+	</union-subclass>
+	<union-subclass name="es.mityc.appfacturae.facturae.LegalEntityType" table="LEGAL_ENTITY">
+		<property name="corporateName" not-null="true" column="CORPORATE_NAME"/>
+		<property name="tradeName" column="TRADE_NAME"/>
+		<property name="face" column="FACE"/>
+		<many-to-one name="registrationData" column="REGISTRATION_DATA" class="es.mityc.appfacturae.facturae.RegistrationDataType"/>
+		<many-to-one name="generalAddress" not-null="true" column="ADDRESS" class="es.mityc.appfacturae.facturae.Address"/>
+		<many-to-one name="contactDetails" column="CONTACT" class="es.mityc.appfacturae.facturae.ContactDetailsType"/>
+	</union-subclass>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.Address" table="ADDRESS">
+	<id name="id" type="int" column="ADDRESS_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">ADDRESS</param>
+			<param name="column">ADDRESS_ID</param>
+		</generator>
+	</id>
+	<discriminator not-null="true" column="TYPE_VERSION" type="string"/>
+	<subclass name="es.mityc.appfacturae.facturae.AddressType" discriminator-value="Spain">
+		<subclass name="es.mityc.appfacturae.facturae32.AddressType" discriminator-value="Spain-3.1">
+			<property name="address" not-null="true" column="ADDRESS"/>
+			<property name="postCode" column="POST_CODE"/>
+			<property name="town" not-null="true" column="TOWN"/>
+			<property name="province" not-null="true" column="PROVINCE"/>
+			<property name="countryCode" not-null="true" column="COUNTRY" type="es.mityc.appfacturae.hibernate.userType.EnumCountry31Type"/>
+		</subclass>
+	</subclass>
+	<subclass name="es.mityc.appfacturae.facturae.OverseasAddressType" discriminator-value="Overseas">
+		<subclass name="es.mityc.appfacturae.facturae32.OverseasAddressType" discriminator-value="Overseas-3.1">
+			<property name="address" column="ADDRESS"/>
+			<property name="postCodeAndTown" column="TOWN"/>
+			<property name="province" column="PROVINCE"/>
+			<property name="countryCode" column="COUNTRY" type="es.mityc.appfacturae.hibernate.userType.EnumCountry31Type"/>
+		</subclass>
+	</subclass>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.RegistrationDataType" table="REGISTRATION_DATA">
+	<id name="id" type="int" column="REGISTRATION_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">REGISTRATION</param>
+			<param name="column">REGISTRATION_ID</param>
+		</generator>
+	</id>
+	<property name="book" column="BOOK"/>
+	<property name="registerOfCompaniesLocation" column="LOCATION"/>
+	<property name="sheet" column="SHEET"/>
+	<property name="folio" column="FOLIO"/>
+	<property name="section" column="SECTION"/>
+	<property name="volume" column="VOLUME"/>
+	<property name="additionalRegistrationData" column="ADDITIONAL_DATA"/>
+</class>
+
+<class name="es.mityc.appfacturae.facturae.ContactDetailsType" table="CONTACT_DETAILS">
+	<id name="id" type="int" column="CONTACT_ID">
+		<generator class="org.hibernate.id.IdentityGenerator">
+			<param name="table">CONTACT</param>
+			<param name="column">CONTACT_ID</param>
+		</generator>
+	</id>
+	<property name="telephone" column="TELEPHONE"/>
+	<property name="teleFax" column="FAX"/>
+	<property name="webAddress" column="WEB"/>
+	<property name="electronicMail" column="EMAIL"/>
+	<property name="contactPersons" column="CONTACT_PERSON"/>
+	<property name="cnoCnae" column="CNO_CNAE"/>
+	<property name="ineTownCode" column="INE_TOWN_CODE"/>
+	<property name="additionalContactDetails" column="ADDITIONAL_DATA"/>
+</class>
+
+<!-- Inerza SA. - 20150312 - Añadir factoring -->
+<class name="es.mityc.appfacturae.facturae.AssigneeType" table="ASSIGNEE">
+    <id name="assigneeNumber" column="ASSIGNEE_ID_NUMBER"/>
+    <many-to-one name="taxIdentification" class="es.mityc.appfacturae.facturae.TaxIdentificationType" column="TAX_IDENTIFICATION" />
+    <many-to-one name="legalEntity" class="es.mityc.appfacturae.facturae.LegalEntityType" column="LEGAL_ENTITY" />
+    <many-to-one name="individual" class="es.mityc.appfacturae.facturae.IndividualType" column="INDIVIDUAL_ENTITY" />
+</class>
+<!-- Inerza SA. - 20150312 - Añadir factoring -->
+</hibernate-mapping>

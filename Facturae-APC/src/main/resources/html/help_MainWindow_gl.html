@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Pantalla principal </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduci�n </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Esta � a vent� principal dende a que vostede poder� acceder a todas as demais vent�s, e realizar todas as acci�ns implementadas na aplicaci�n, as� como ver as listaxes de facturas existentes na base de datos, discriminando polo seu estado (a trav�s da �rbore de navegaci�n na esquina superior esquerda, � dicir, se son facturas emitidas, enviadas, rectificadas...). Adicionalmente, a listaxe de facturas que se mostran na t�boa central pode ser discriminada � s�a vez realizando unha busca selectiva mediante o filtro de busca que hai na parte superior da pantalla.</P>
+   <P>En funci�n do estado seleccionado na �rbore de facturas, aparecer�n, na parte inferior da pantalla, as distintas acci�ns dispo�ibles para o tipo de factura, sendo as m�is com�ns a visualizaci�n, a edici�n e a sinatura de facturas. M�is adiante veremos detalladamente as acci�ns dispo�ibles para cada un dos estados de factura, as� como a s�a utilidade e modo de uso.</P>
+   <P>Na parte esquerda da pantalla rec�llense os bot�ns destinados a realizar o resto de acci�ns dispo�ibles non referidas a unha factura existente en base de datos. Por orde, estas son: xerar unha nova factura pertencente ao esquema seleccionado no men� despregable que lle segue (por defecto, 3.1), introducir na base de datos unha factura externa despois dunha tripla validaci�n, acceder � configuraci�n da aplicaci�n, realizar buscas de facturas cun filtro m�is restritivo e completo que o desta pantalla, visualizar o resumo de IVE de todas as facturas, consultar o hist�rico de acci�ns realizadas pola aplicaci�n, importar unha base de datos externa ou exportar a actual a ficheiro.</P>
+   <P>Na esquina inferior esquerda da vent�, m�strase a s�a imaxe seleccionada a xeito de logotipo (modificable dende configuraci�n) e unha barra de progreso que indica o estado das tarefas que hai que realizar.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruci�ns de uso </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>�rbore de facturas</B><P>Na �rbore de facturas perm�tese escoller entre o tipo de facturas que se van mostrar segundo o seu estado, que pode ser: "Borrador" para as facturas a�nda non asinadas, "Emitida" para as facturas asinadas, "Enviada" para as facturas asinadas e enviadas por correo electr�nico e "Recibidas" para as facturas externas engadidas � base de datos mediante o di�logo "Recibir factura". Para as facturas "Rectificativas", � dicir, as facturas asinadas que foron corrixidas, hai as mesmas categor�as, ag�s a opci�n de "Recibidas". Para cambiar a navegaci�n entre unhas e outras s� ten que facer clic sobre a opci�n desexada. Para expandir o nodo "Rectificativas" faga clic sobre o bot�n " + " que hai a s�a esquerda. Ao cambiar a selecci�n na �rbore, listaranse todas as facturas que estean nese estado, e mostraranse os bot�ns relacionados.</P></LI>
+    <LI><B>Filtro de facturas</B><P>O filtro de facturas � utilizado para limitar as coincidencias atopadas na base de datos. Vostede pode filtrar a busca indicando un emisor espec�fico de factura (mostraranse as facturas realizadas por este emisor), as� como un receptor ou ou un concepto facturado en concreto. Para realizar unha busca de facturas creadas dentro dun per�odo de tempo, marque a opci�n "Data". Mostraranse dous campos para que indique o inicio e o final do per�odo de tempo seleccionado (os d�as seleccionados incl�ense no per�odo de busca). Para que a busca se faga efectiva, faga clic no bot�n "Busca" despois de indicar os filtros que quere utilizar. Mostraranse todas as facturas que cumpran as devanditas condici�ns e que estean no estado seleccionado na �rbore de facturas.</P></LI>
+    <LI><B>T�boa de facturas</B><P>A t�boa de facturas mostra as facturas atopadas en base de datos, ordenadas por orde de creaci�n. Os datos mostrados son: "Identificador", que � a serie e n�mero que identifican univocamente � factura. A "Data", que indica a data de creaci�n da factura. O "Emisor" mostra o identificador do emisor da factura. A columna "Receptor" mostra o identificador para o cliente do emisor. O campo "Importe" mostra o importe total da factura, expresado en euros. Finalmente, a "Versi�n" mostra a versi�n do esquema ao cal pertence a factura. A continuaci�n, m�stranse tres bot�ns, un punto de interrogaci&oacute;n, un ollo e un cubo de lixo, que poden ser empregados para comprobar o estado da factura en, para mostrar a factura en distintos formatos normalizados, e para borrar a factura (sen posibilidade de recuperaci�n), respectivamente.</P></LI>
+    <LI><B>Bot�ns de facturas</B><P>Os bot�ns de facturas aglutinan as distintas acci�ns que se poden realizar sobre unha factura seleccionada (se non hai unha factura seleccionada na t�boa de facturas, estes bot�ns non far�n nada). Os distintos estados de factura que existen determinan as opci�ns que se poden realizar sobre elas. Estas son: <UL TYPE="1">
+     <LI>Visualizar. - <P>Permite visualizar o formulario de factura, pero sen a posibilidade de cambiar ning�n dato.</P></LI>
+     <LI>Adxuntos. - <P>Permite visualizar unha listaxe con todos os ficheiros adxuntos que ten a factura, as� como engadir adxuntos novos (sen posibilidade de inclu�los no arquivo de factura) ou eliminalos.</P></LI>
+     <LI>Editar. - <P>Permite entrar dentro do formulario cuberto da factura coma se dunha factura nova se tratase, � dicir, p�dese cambiar calquera dos seus datos e, posteriormente, gardar ou asinar.</P></LI>
+     <LI>Asinar. - <P>Inicia o proceso de sinatura da factura mediante certificado dixital para sinatura. Abrirase un di�logo para que seleccione o certificado de sinatura que se vai utilizar.</P></LI>
+     <LI>Ver XML. - <P>Abre un navegador que mostra o c�digo XML da factura. � dicir, m�strase o interior da factura, non unha representaci�n normalizada desta (accesible mediante o ollo dentro da li�a de factura).</P></LI>
+     <LI>Rectificar. - <P>� an�logo ao bot�n "Editar", ag�s porque ao gardar ou asinar aparecer� un di�logo para que indique as causas de rectificaci�n. A nova factura xerada pasar� a estar dentro do nodo "Rectificativa" na �rbore de facturas.</P></LI>
+     <LI>Enviar. - <P>Ao premer neste bot�n, mostrarase un di�logo para que vostede poida escribir un correo electr�nico coa factura seleccionada como ficheiro adxunto.</P></LI>
+     <LI>Reenviar. - <P>� an�logo ao bot�n "Enviar".</P></LI>
+     <LI>Ver rectificaci�ns. - <P>Mostra un di�logo coas causas de rectificaci�n da factura rectificativa seleccionada.</P></LI>
+     </UL>
+    </P></LI>
+    <LI><B>Bot�ns de aplicaci�n</B><P>Estes bot�ns permiten realizar o resto de acci�ns implementadas na aplicaci�n. A s�a utilidade est� explicada no apartado chamado "Introduci�n", que est� sobre estas li�as. Para utilizalas, s� ten que facer clic na opci�n desexada. Cada unha das opci�ns abrir� un di�logo propio que cont�n a s�a propia axuda contextual, polo que nos remitimos a ela para definir m�is profundamente o seu funcionamento interno.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

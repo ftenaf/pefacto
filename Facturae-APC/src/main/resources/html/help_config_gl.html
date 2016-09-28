@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Configuraci�n da aplicaci�n </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduci�n </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Este � o di�logo de configuraci�n no que vostede pode configurar par�metros da aplicaci�n, coma as series identificativas que se van empregar nas novas facturas emitidas e rectificativas, as� como cada un dos seus n�meros de serie. S� se permiten indicar identificadores de factura que non existan xa na base de datos.</p>
+   <P>Tam�n pode indicar a ruta a unha imaxe, que se mostrar� na vent� principal da aplicaci�n e que ser� tomada como imaxe que se debe achegar nas facturas xeradas, a xeito de logotipo de empresa.</P>
+   <P>No bloque chamado "Proxy" perm�tese indicar os datos necesarios para a configuraci�n dun servidor de correo SMTP que ser� empregado para enviar as s�as facturas telematicamente, e opcionalmente, os datos do servidor proxy que hai que atravesar para acceder a Internet dende unha intranet local.</P>  
+   <P>O bloque chamado "OCSP" perm�telle proporcionar os datos de conexi�n a un servidor OCSP, que serve para validar o estado dos certificados de sinatura empregados na sinatura electr�nica das facturas emitidas contra unha autoridade de validaci�n.</P> 
+   <P>A continuaci�n, no bloque chamado "Extensi�ns", p�dense definir novos tags (unidades l�xicas de informaci�n) non definidos no esquema de factura empregado, o que lle permite estender o esquema de factura segundo as s�as necesidades.</P>
+   <P>Finalmente, no bloque titulado "Idioma", perm�tese seleccionar o idioma de presentaci�n da aplicaci�n. Un cambio de idioma require un reinicio da aplicaci�n para que te�a efecto.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruci�ns de uso </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>Xeral</B><P>S� se permite especificar o prefixo dos identificadores de facturas emitidas (asinadas) e rectificativas (correcci�ns ou extensi�ns doutra factura), que non poden ser iguais (se o son, forzarase un cambio). O resto de prefixos son definidos pola aplicaci�n. Para que os identificadores de factura sexan un�vocos, os n�meros que se vaian asignar non poden existir xa en base de datos. No momento no que vostede perda o foco, mediante o uso do tabulador ou facendo clic co rato noutro lugar, a aplicaci�n far� unha consulta � base de datos e, no caso de que o identificador xa exista, marcarase en vermello o campo, limparase o valor introducido e mostrarase unha mensaxe de alerta. Os n�meros de factura iranse incrementando automaticamente a medida que se vaian creando novas facturas.</P></LI>
+    <LI><B>Logo</B><P>Utilice o bot�n examinar (a s�a icona mostra unha carpeta) para seleccionar a imaxe que se vai utilizar como logotipo. Ao premer neste bot�n, abrirase un di�logo para que indique a ruta da imaxe desexada. A aplicaci�n permite seleccionar imaxes con formato tif, gif, jpg, png ou bmp, imaxe que ser� axustada ata un tama�o de 305 x 121 p�xeles.</P></LI>
+    <LI><B>Proxy</B><P>A secci�n "Proxy" componse de d�as partes: a parte esquerda, empregada para especificar os datos de conexi�n ao servidor de correo, e a parte dereita, cuxa finalidade � proporcionar os datos de conexi�n ao proxy de acceso a Internet, se o hai. Os datos de conexi�n ao servidor de correo SMTP comp��ense dun URL (un enderezo de Internet, por exemplo "www.ServidorSMTP.es") ou unha IP. O seguinte campo � o porto de conexi�n, seguido dunha casa de verificaci�n que habilita o uso do protocolo seguro de conexi�n SSL, e se este require autenticaci�n seguindo o esquema "Usuario-Contrasinal". O derradeiro campo �sase para indicar a conta de correo, pertencente ao servidor indicado, que se vai utilizar como emisor da mensaxe. </BR>Na parte dereita, empregada para indicar o uso de proxy, ind�case a URL do servidor proxy (por exemplo, "www.Proxy.es") ou unha IP, seguida do porto de ataque e, analogamente, se se emprega o esquema "Usuario-Contrasinal" para identificar os clientes.</P></LI>
+    <LI><B>OCSP</B><P>Neste bloque proporci�nanse os datos dunha autoridade de validaci�n para comprobar que os certificados de sinatura sexan v�lidos. P�dese realizar esta validaci�n na emisi�n dunha factura (� dicir, ao asinar) ou na recepci�n. O �ltimo campo empr�gase para indicar o enderezo de Internet do servidor OCSP (por exemplo, "www.ServidorOCSP.es", ou unha IP).</P></LI>
+    <LI><B>Extensi�ns</B><P>O bloque "Extensi�ns" require un co�ecemento b�sico da estrutura interna dun ficheiro XML. O devandito formato componse de etiquetas que abren e pechan bloques de informaci�n esquematicamente. A especificaci�n de factura electr�nica define as etiquetas que poden aparecer nos ficheiros XML xerados. Para agregar novas etiquetas, primeiro debe indicar o descritor de esquema (� un ficheiro XSD) que se vai estender; a continuaci�n, debe indicar o espazo de nomes das etiquetas que hai que engadir (por exemplo, "http://www.w3.org/2000/09/xmldsig#") e, finalmente, premer no bot�n " + ". Co bot�n " - " eliminarase a li�a seleccionada.</P>
+    <LI><B>Idioma</B><P>Para escoller outro idioma entre os que hai dispo�ibles, faga clic sobre o bot�n situado � dereita e mostrarase o di�logo. Se selecciona un idioma distinto do actual, mostrarase un aviso para que reinicie a aplicaci�n.</P>   
+    <LI><B>FACe</B><P>Use o bot&oacute;n Configuraci&oacute;n para acceder a cara na pantalla con informaci&oacute;n sobre o acceso ao servizo de facturaci&oacute;n.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

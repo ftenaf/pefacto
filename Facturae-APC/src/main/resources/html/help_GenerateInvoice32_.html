@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+	<META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+	<STYLE type="text/css">
+		H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+		P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+		TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+	</STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD BGCOLOR="#E6F0FA" COLSPAN="2">
+			<H1><B>Generaci&oacute;n de una factura en formato <I>"facturae"</I><BR>
+			 	(versi&oacute;n 3.2)</H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Instrucciones de uso</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<P>La presente ventana est&aacute; destinada a la generaci&oacute;n de borradores y facturas en formato <I>"facturae"</I> (versi&oacute;n 3.2).
+				Para ello se muestran una serie de campos, algunos de ellos de obligada cumplimentaci&oacute;n por parte del usuario (marcados con un asterisco: *)
+				y otros no editables (con un fondo de color azul) que son meramente informativos. A continuaci&oacute;n se describen detalladamente c&oacute;mo deben rellenarse
+				los diferentes campos:</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<UL TYPE="1">
+				<LI><P>En la secci&oacute;n <B>"Datos Generales Factura"</B> se permite introducir datos de car&aacute;cter global tales como la fecha de emisi&oacute;n,
+						 la fecha y el lugar de operaci&oacute;n o el per&iacute;odo de facturaci&oacute;n. Adem&aacute;s, el sistema asignar&aacute;, de manera interna, un identificador 
+						 &uacute;nico o "N&uacute;mero de Factura" a la factura que se est&aacute; generando.</P></LI>
+				<LI><P>En la secci&oacute;n <B>"Emisor"</B> se puede seleccionar un emisor ya existente (de entre todos los que previamente se hayan almacenado en la 
+				aplicaci&oacute;n) o introducir un nuevo emisor y guardarlo en base de datos.</P>
+					<UL TYPE="a">
+						<LI><P>En el primer caso, seleccione "Persona Jur&iacute;dica" o "Persona F&iacute;sica" y a continuaci&oacute;n despligue
+								la pesta�a situada en "Emisor". Finalmente, pulse sobre el usuario deseado.</P></LI>
+						<LI><P>En el segundo caso, pulse sobre el bot&oacute;n "Nuevo Usuario". Acto seguido, todos los campos del emisor se har&aacute;n
+							editables (fondo de color blanco) para que pueda introducir los datos del nuevo usuario. El �nico campo no editable ser&aacute;
+							"Identificador", cuyo valor lo asignar&aacute; internamente la propia aplicaci&oacute;n. Una vez cumplimentados todos los campos
+							obligatorios, pulse en el bot&oacute;n "Guardar": aparecer&aacute; un mensaje informativo sobre el &eacute;xito / fracaso de la operaci&oacute;n.</P></LI>
+						<LI><P>Tambi&eacute;n es posible borrar un emisor ya existente, siempre y cuando no haya sido utilizado previamente en alguna otra factura 
+							o borrador: basta con seleccionarlo y pulsar el bot&oacute;n "Borrar Usuario".  
+					</UL>
+				</LI>
+				<LI><P>La secci&oacute;n <B>"Receptor"</B> es completamente an&aacute;loga a la anterior. En este caso, se habilitar&aacute; la pesta&ntilde;a FACe se ha seleccionado que se trata de un receptor de este tipo.</P></LI>
+				<LI><P>En la secci&oacute;n "Detalle Factura" se introduce el (los) concepto(s) a facturar (tabla con borde de color azul intenso). Puede a�adir o borrar detalles (o conceptos) con ayuda de los iconos
+						situados a tal efecto en el lateral derecho.<BR>
+						Adem&aacute;s, puede introducir o borrar datos globales de la factura como descuentos, cargos, documentos adjuntos...etc. en el panel localizado
+						debajo de la tabla de conceptos, ayud&aacute;ndose de los botones "A�adir" y "Eliminar" situados en el lateral derecho.<BR>
+						Finalmente, en el apartado "Totales" se muestran a modo informativo los valores num&eacute;ricos de los diversos campos que conformar&aacute;n la factura.</P></LI>
+			</UL>
+		</TD>
+	</TR>
+		<TR>
+		<TD COLSPAN="2">
+			<P>Una vez cumplimentados todos los campos obligatorios, existen dos posibilidades:</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<UL TYPE="1">
+				<LI><P><B>"Guardar Borrador</B>": Se almacenar&aacute; en la carpeta "Borradores", a la espera de ser mofificado y/o firmado posteriormente. Un borrador tambi&eacute;n puede ser eliminado si as&iacute; lo desea.</P></LI>
+				<LI><P><B>"Firmar"</B>: Aparecer&aacute; una ventana con todos los certificados digitales disponibles. Tras selecionar uno de ellos, se generar&aacute; la correspondiente factura con firma digital, 
+						quedando almacenada en la carpeta "Emitidas". Una factura emitida no podr&aacute; ser eliminada.</P></LI>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+			<BR><BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Introducci&oacute;n de documentos adjuntos.</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<P>Si lo desea puede adjuntar uno o varios documentos a la factura que va a generar. Para ello pulse en la pesta�a 
+				"Adjuntos" situada en la secci&oacute;n "Detalle de Factura". Al pulsar en el bot&oacute;n "A�adir", se desplegar&aacute; una ventana emergente 
+				en la cual podr&aacute; seleccionar el tipo de fichero a adjuntar (en "Formato") as&iacute; como la ruta de su localizaci&oacute;n (para ello puede ayudarse 
+				del bot&oacute;n "Examinar"). Debe introducir obligatoriamente, adem&aacute;s, una descripci&oacute;n acerca del documento adjuntado.<BR> 
+				Finalmente, puede escoger incluir (o no) el fichero adjuntado en el xml de la factura. En caso afirmativo, el documento se codificar&aacute a binario y pasar&aacute;
+				a formar parte del xml; en caso contrario, s&oacute;lo se construir&aacute; una referencia interna entre la factura generada y el fichero adjuntado. 
+				A continuaci&oacute;n pulse en "Aceptar": el documento seleccionado aparecer&aacute en la tabla de adjuntos.<BR>
+				Del mismo modo, tambi&eacute;n puede eliminar documentos adjuntos pulsando en "Eliminar".</P>
+			<BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Introducci&oacute;n de Extensiones.</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+		<P>El bloque "Extensi&oacute;n" requiere un con&oacute;cimiento b&aacute;sico de la estructura interna de un fichero XML. 
+		Dicho formato se compone de etiquetas que abren y cierran bloques de informaci&oacute;n esquem&aacute;ticamente. 
+		La especificaci&oacute;n de factura electr&oacute;nica define las etiquetas que pueden aparecer en los ficheros XML generados. <BR>
+		Para agregar nuevas etiquetas, en primer lugar debe indicar en la ventana de "Configuraci&oacute;n" el descriptor de esquema (fichero XSD) a extender y el espacio de nombres de las etiquetas
+		 a a�adir.<BR>
+		 Despu�s introduzca el bloque de informaci&oacute;n que desea insertar en la factura. Puede hacerlo de dos maneras:
+		<UL TYPE="1">
+				<LI><P>Directamente en el campo "Extensi&oacute;n".</P></LI>
+				<LI><P>Pulsando en el bot&oacute;n "Ampliar": se abrir&aacute; una ventana emergente donde podr&aacute; insertar el bloque de informaci&oacute;n.</P></LI>
+		</UL>
+		 Posteriormente, pulse en "Verificar" para comprobar si la informaci&oacute;n introducida cumple el esquema definido por el fichero XSD seleccionado en "Configuraci&oacute;n".
+		 <BR>Si el resultado es positivo, aparecer&aacute; un mensaje de &eacute;xito y dicha porci&oacute;n de c&oacute;digo pasar&aacute; a formar parte de la factura. Si, por el contrario, el resultado es negativo, 
+		 se mostrar&aacute; un mensaje de advertencia (puede pulsar en "Ampliar" para obtener m&aacute;s detalles acerca del error ocurrido) y la informaci&oacute;n no ser&aacute; introducida en la factura.
+		 <BR>
+		  </P>
+			<BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Nota</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+		<P>Las extensiones se pueden introducir en tres diferentes lugares de la factura:
+		<UL TYPE="1">
+				<LI><P>A nivel global de factura, desde la ventana de generaci&oacute;n de facturas.</P></LI>
+				<LI><P>A nivel de documentos adjuntos, en la pesta�a "Adjuntos" situada en la secci&oacute;n 
+					"Detalle de Factura" de la ventana de generaci&oacute;n de facturas.</P></LI>
+				<LI><P>A nivel de concepto o l&iacute;nea de detalle, desde la ventana de generaci&oacute;n de conceptos.</P></LI>
+		</UL>
+		</P>
+		<BR>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

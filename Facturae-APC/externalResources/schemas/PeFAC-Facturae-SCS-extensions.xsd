@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns="http://pefac.gobcan.es/scs/facturae/extension/v1.0"
+           targetNamespace="http://pefac.gobcan.es/scs/facturae/extension/v1.0">
+           <xs:element name="SCSExtension">
+               <xs:complexType>
+                   <xs:sequence>
+                       <xs:element name="CodigoMaterial" minOccurs="0" maxOccurs="1" type="Text18Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                   Código de material en Catálogo Único del SCS
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="CodigoGTIN" minOccurs="0" maxOccurs="1" type="Text18Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                   Código GTIN del artículo facturado Historial
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="Clinico" minOccurs="0" maxOccurs="1" type="Text20Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                   Nº de Historia Clínica a la que se asocia el material facturado. Identifica la Historia Clínica del paciente en aquellos materiales en que sea necesaria esta identificación.
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="AlbaranReposicion" minOccurs="0" maxOccurs="1" type="Text16Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                    Número interno del albarán de reposición facturado. Este número se le informa al proveedor en la emisión del pedido de reposición por parte del centro, identificado en la parte inferior derecha del documento. 
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="Redcadv" minOccurs="0" maxOccurs="1" type="Text10Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                    Documento material o de entrega de mercancía en el circuito EDI
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="CentroImputacionGasto" minOccurs="0" maxOccurs="1" type="Text50Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                    Centro en el que se entrega los bienes o realiza la prestación. Ej.: Centro de salud de Vecindario o Hospital Juan Carlos I o Centro de salud de Hermigua.
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                       <xs:element name="LoteArticulo" minOccurs="0" maxOccurs="1" type="Text10Type">
+                           <xs:annotation>
+                               <xs:documentation xml:lang="es">
+                                    Lote del artículo facturado (código del proveedor identificador del lote del artículo facturado si lo tuviera)
+                               </xs:documentation>
+                           </xs:annotation>
+                       </xs:element>
+                   </xs:sequence>
+               </xs:complexType>
+           </xs:element>
+           <xs:simpleType name="Text18Type">
+               <xs:restriction base="xs:string">
+                   <xs:maxLength value="18"/>
+               </xs:restriction>
+           </xs:simpleType>
+           <xs:simpleType name="Text20Type">
+               <xs:restriction base="xs:string">
+                   <xs:maxLength value="20"/>
+               </xs:restriction>
+           </xs:simpleType>
+           <xs:simpleType name="Text16Type">
+               <xs:restriction base="xs:string">
+                   <xs:maxLength value="16"/>
+               </xs:restriction>
+           </xs:simpleType>
+           <xs:simpleType name="Text10Type">
+               <xs:restriction base="xs:string">
+                   <xs:maxLength value="10"/>
+               </xs:restriction>
+           </xs:simpleType>
+           <xs:simpleType name="Text50Type">
+               <xs:restriction base="xs:string">
+                   <xs:maxLength value="50"/>
+               </xs:restriction>
+           </xs:simpleType>
+</xs:schema>

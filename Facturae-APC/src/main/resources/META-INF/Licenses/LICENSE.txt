@@ -1,0 +1,111 @@
+﻿
+Facturae-APC es una librería de libre distribución cuyo código fuente puede ser consultado y descargado desde http://www.facturae.es/es-ES/Paginas/principal.aspx. Las presentes condiciones de uso establecen las clásulas y condiciones de uso:
+
+1. Licencia
+Facturae-APC se encuentra bajo la licencia EUPL versión 1.1 o posterior. Puede consultar el texto completo de la licencia en el ficheros "EUPL v.1.1.pdf".
+
+2. Usted declara y garantiza que está autorizado a aceptar y cumplir las clásulas y condiciones de Facturae-APC.
+
+3. Usted reconoce y acepta que correrá con todos los riesgos que surjan del uso que usted haga de Facturae-APC.
+
+4. Derechos de Propiedad Intelectual
+El Ministerio de Industria, Energía y Turismo retiene los Derechos de Propiedad Intelectual sobre Facturae-APC.
+
+5. Renuncia a garantías y descargo de responsabilidad
+5.1 Ausencia de garantías. Facturae-APC SE PROVEE EN SU ESTADO ACTUAL Y SIN GARANTÍAS DE NINGÚN TIPO.  NO SE OFRECE DE MANERA EXPLÍCITA, IMPLÍCITA, NI JURADA GARANTÍAS, AFIRMACIONES NI DECLARACIONES DE NINGÚN TIPO CON RESPECTO A Facturae-APC.
+5.2 Descargo de responsabilidad. Usted recibe Facturae-APC de forma gratuita. POR CONSIGUIENTE, USTED RECONOCE Y ACEPTA QUE EL GOBIERNO DE ESPAÑA Y SU PERSONAL NO TENDRÁ RESPONSABILIDAD ALGUNA QUE SURJA DEL USO DEL Facturae-APC O SE RELACIONE CON DICHO USO. SU ÚNICO DERECHO O RECURSO LEGAL ANTE CUALQUIER PROBLEMA O DISCONFORMIDAD CON Facturae-APC ES DEJAR DE USARLO DE INMEDIATO.
+
+6. Facturae-APC incluye o puede incluir porciones o componentes de software de los siguientes productos, cubiertos por las siguientes licencias:
+
+Componentes de Firma XAdES - http://oficinavirtual.mityc.es/componentes/index.html
+  EUPL versión 1.1 o posterior - http://oficinavirtual.mityc.es/componentes/license.html (Fichero adjunto "LICENSE-compFirmaXAdES.txt")
+
+FEBComp10 - Bridge FacturaE - http://www.facturae.es/es-ES/Descargas/DescargasDesarrollo/Paginas/APIJava2.aspx
+  EUPL versión 1.1 o posterior -  http://www.facturae.es (Fichero adjunto "LICENSE-Facturae-Bridge"
+  
+Facturae-API - Facturae API - http://www.facturae.es/es-ES/Descargas/DescargasDesarrollo/Paginas/APIJava2.aspx
+  EUPL versión 1.1 o posterior -  http://www.facturae.es (Fichero adjunto "LICENSE-Facturae-API"
+
+Facturae-FACe - Facturae FACe - http://www.facturae.es/es-ES/Descargas/DescargasDesarrollo/Paginas/APIJava2.aspx
+  EUPL versión 1.1 o posterior -  http://www.facturae.es (Fichero adjunto "LICENSE-Facturae-FACe"
+
+activation - 
+  COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0 (Fichero adjunto "LICENSE-activation.txt")
+
+The Legion of the Bouncy Castle - http://www.bouncycastle.org/
+  The Legion of the Bouncy Castle License - http://www.bouncycastle.org/csharp/licence.html	(Fichero adjunto "LICENSE-BouncyCastle.txt")  
+
+Apache Commons - http://commons.apache.org/ 
+  Apache License 2.0 - http://svn.apache.org/viewvc/commons/proper/io/trunk/LICENSE.txt	(Fichero adjunto "LICENSE-Commons.txt")
+
+DNIeJCAProvider - http://administracionelectronica.gob.es/?_nfpb=true&_pageLabel=PAE_PG_CTT_Area_Descargas&langPae=es&iniciativa=330
+  Licencia dual LGPL 2.1+ o EUPL 1.1+ -  http://www.gnu.org/licenses/gpl-3.0.html y http://joinup.ec.europa.eu/software/page/eup (Fichero adjunto "LICENSE-DNIeJCAProvider.txt")
+
+Hibernate - http://www.jboss.org/projects
+  GNU Lesser General Public License, version 2.1 - http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+  
+hsqldb - http://hsqldb.org
+  BSD License - http://hsqldb.org/web/hsqlLicense.html (Fichero adjunto "LICENSE-hsqldb.txt")
+
+http-client - http://hc.apache.org/downloads.cgi
+  Apache License 2.0 - http://www.apache.org/licenses/ (Fichero adjunto "LICENSE-httpclient.txt")
+
+iaikpkcs11wrapper - https://jce.iaik.tugraz.at/sic/Download
+  Apache-style license - http://jce.iaik.tugraz.at/sic/Products/Core-Crypto-Toolkits/PKCS_11_Wrapper/license (Fichero adjunto "LICENSE-iaikpkcs11wrapper.txt")
+
+iText - http://itextpdf.com/
+  GNU Library General Puplic License Version 2 - http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html	(Fichero adjunto "LICENSE-iText.txt")
+
+jaxb-api
+  COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0 (Fichero adjunto "LICENSE-jaxb-api.txt")
+
+jaxb-impl - http://jaxb.java.net/
+  Dual license consisting of the CDDL v1.1 and GPL v2 - http://glassfish.java.net/public/CDDL+GPL_1_1.html (Fichero adjunto "LICENSE-jaxb-impl.txt")
+  
+jcalendar - 
+  https://code.google.com/p/todo-application/source/browse/branches/sven/src/de/wannawork/jcalendar/JCalendarComboBox.java?r=14 (Fichero adjunto "LICENSE-jCalendar.txt")
+
+jdic - https://jdic.dev.java.net/
+ LGPL 2.0 - http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html (Fichero adjunto "LICENSE-jdic.txt")
+
+jsr173_api - 
+  Binary Code License Agreement - http://svn.apache.org/repos/asf/beehive/trunk/LICENSE.jsr173-api (Fichero adjunto "LICENSE-jsr173.txt")
+
+jss - http://www.mozilla.org/projects/security/pki/jss/
+ MPL 1.1/GPL 2.0/LGPL 2.1 - http://www.mozilla.org/MPL/boilerplate-1.1/mpl-tri-license-txt (Fichero adjunto "LICENSE-jss.txt")
+
+liquid - http://liquidlnf.sourcearchive.com/documentation/2.9.1-7/files.html
+ LGPL 2.1 o posterior - http://liquidlnf.sourcearchive.com/documentation/2.9.1-7/LiquidLookAndFeel_8java-source.html (Fichero adjunto "LICENSE-liquid.txt")
+
+log4j - http://logging.apache.org/log4j/1.2/
+  Apache License 2.0 - http://logging.apache.org/log4j/1.2/license.html (Fichero adjunto "LICENSE-log4j.txt")  
+
+mail - http://grepcode.com/snapshot/repo1.maven.org/maven2/javax.mail/mail/1.4.1
+  COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0 - https://glassfish.java.net/public/CDDLv1.0.html (Fichero adjunto "LICENSE-mail.txt")
+
+nimrodlf - http://personales.ya.com/nimrod/download.html
+ LGPL 2.1 - http://personales.ya.com/nimrod/licencia.html (Fichero adjunto "LICENSE-nimrodlf.txt")
+
+openJDK - http://openjdk.java.net/
+  GNU General Public License Version 2, with the Classpath Exception - http://openjdk.java.net/legal/gplv2+ce.html	(Fichero adjunto "LICENSE-openJDK.txt")
+
+serializer - http://xml.apache.org/xalan-j/
+ Apache License 2.0 - http://xml.apache.org/xalan-j/ (Fichero adjunto "LICENSE-serializer.txt")
+
+swingLayout - http://grepcode.com/snapshot/repo1.maven.org/maven2/org.swinglabs/swing-layout/1.0.3
+  LGPL 3 - http://grepcode.com/snapshot/repo1.maven.org/maven2/org.swinglabs/swing-layout/1.0.3 (Fichero adjunto "LICENSE-swingLayout.txt")
+  
+xalan - http://xml.apache.org/xalan-j/
+ Apache License 2.0 - http://xml.apache.org/xalan-j/ (Fichero adjunto "LICENSE-xalan.txt")
+
+xmlapis
+ Apache License 2.0 - http://xml.apache.org/xalan-j/ (Fichero adjunto "LICENSE-xmlapis.txt")
+
+xmlsec - http://santuario.apache.org/
+ Apache License 2.0 - http://www.apache.org/licenses/ (Fichero adjunto "LICENSE-xmlsec.txt")
+
+Puede consultar las respectivas licencias en sus correspondientes URLs. En cualquier caso, las bibliotecas mencionadas, hayan sido modificadas o no como parte de este proyecto, se proporcionan sin ninguna garantía explícita o implícita hasta el extremo permitido por la Ley.
+Se declina toda responsabilidad por cualquier daño pérdida provocada por este código, aunque hubiese sido previamente advertido de la posibilidad de que ocurriese el mismo.
+
+
+USTED RECONOCE EXPRESAMENTE QUE HA LEÍDO ESTAS CONDICIONES DE Facturae-APC Y QUE COMPRENDE Y ACEPTA LOS DERECHOS, LAS OBLIGACIONES, LAS CLÁUSULAS Y LAS CONDICIONES AQUÍ ESTIPULADAS. 

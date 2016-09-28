@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Generating a detail line in invoices </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instructions for use </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>This window is devoted to the generation of a detail line (or item) in invoices. For this purpose a number of fields are displayed, some of which must be filled in by the user (marked with an asterisk: *) and other non-editable ones (with a blue background) which are merely for information purposes. We shall now describe in detail how to fill in the different fields:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>In the section "General" you must register the item to be billed or choose one from among those already in the application if they were previously entered. <UL TYPE="a">
+      <LI><P>In the first case, in the field "Description-id" you must enter a fully representative description of the item to be billed. In addition, you must state the amount (taking special care with the units chosen) and the unit price (in euros). You will see that the field "Total amount" (non-editable) is filled in automatically: it will be the result of multiplying the values entered in the fields "Amount" and "Unit price".<BR>Alternatively, you can enter discounts or charges on the Total amount by using the buttons "Add" and "Delete": an emerging window will be displayed where you can enter the amount of the discount (or charge) and a description of the reason for applying it. Once they have been entered, you will see that the value of the field "Gross amount" is the result of adding the charges to and subtracting the discounts from the field "Total amount".<BR>Finally, if you wish, you may enter additional information regarding the item billed. There are two options: <UL TYPE="i">
+          <LI><P>Enter an explanatory text in the field "Additional information". </P></LI>
+          <LI><P>Enter a fragment of xml in the field "Extension" (this procedure is explained more thoroughly later in the section "Entering extensions"). <P>New tags (logical information units) which were not defined in the model of invoice used may be defined; this allows you to extend the model of invoice to meet your needs.</P>
+           </P></LI>
+         </UL>
+        </P></LI>
+      <LI><P>In the second case, click on the tab located in "Description-id" and choose the item you wish to enter. All the information regarding this item will immediately be loaded in the window of the application. The only compulsory field still empty waiting to be completed by the user will be "Amount".<BR>Once this field is filled in, you can, if you wish, modify some of the data regarding the item or enter new information. </LI></P>
+     </UL>
+     </P></LI>
+    <LI><P>In the section "Taxes" you can set the tax (or taxes) and its corresponding tax rate (or percentage) which applies to the item. For this purpose, use the buttons "Add" and "Delete" situated on the right side.</P>
+    </LI>
+    <BR>
+    <LI><P>In the section "Other details" you can enter information such as contract references, order references or the delivery note code</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Once all the compulsory fields have been completed, there are two possibilities:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Click on "OK": This will take you back to the general invoice generation screen and the item entered will be registered in the corresponding table.</P></LI>
+    <LI><P>Click on "Cancel": This will take you back to the general invoice generation screen; all the information entered in this window will be lost.</P></LI>
+   </UL>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Entering extensions. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>The block "Extension" requires a basic knowledge of the internal structure of an XML file. This format is composed of tags which open and close blocks of information schematically. The electronic bill specification defines the tags that may be displayed in the XML files generated. <BR>To add new tags, you must first indicate in the "Configuration" window the schema descriptor (XSD file) to be extended and the tag names space to be added.<BR>Then, enter the information block you wish to insert in the invoice. You can do this in two ways: <UL TYPE="1">
+    <LI><P>Directly in the field "Extension".</P></LI>
+    <LI><P>By clicking on "Extend": an emerging window will open in which you can insert the information block.</P></LI>
+  </UL>Next, click on "Verify" to check whether the information entered complies with the schema defined by the XSD file selected in "Configuration". <BR>If the result is positive, a success message will pop up and this portion of code will become part of the invoice. If, on the other hand, the result is negative, a warning message will be displayed (you can click on "Extend" to obtain more information on the error that occurred) and the information will not be entered in the invoice. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

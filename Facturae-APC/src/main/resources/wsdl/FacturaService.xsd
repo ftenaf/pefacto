@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://v2.ws.efactura.ceh.gobiernodecanarias.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://v2.ws.efactura.ceh.gobiernodecanarias.org/">
+
+<xs:element name="ServicioError" type="tns:ServicioError"/>
+
+<xs:element name="anularFactura" type="tns:anularFactura"/>
+
+<xs:element name="anularFacturaPorValores" type="tns:anularFacturaPorValores"/>
+
+<xs:element name="anularFacturaPorValoresResponse" type="tns:anularFacturaPorValoresResponse"/>
+
+<xs:element name="anularFacturaResponse" type="tns:anularFacturaResponse"/>
+
+<xs:element name="consultarEstadoMotivoFactura" type="tns:consultarEstadoMotivoFactura"/>
+
+<xs:element name="consultarEstadoMotivoFacturaPorValores" type="tns:consultarEstadoMotivoFacturaPorValores"/>
+
+<xs:element name="consultarEstadoMotivoFacturaPorValoresResponse" type="tns:consultarEstadoMotivoFacturaPorValoresResponse"/>
+
+<xs:element name="consultarEstadoMotivoFacturaResponse" type="tns:consultarEstadoMotivoFacturaResponse"/>
+
+<xs:element name="consultarFactura" type="tns:consultarFactura"/>
+
+<xs:element name="consultarFacturaPorValores" type="tns:consultarFacturaPorValores"/>
+
+<xs:element name="consultarFacturaPorValoresResponse" type="tns:consultarFacturaPorValoresResponse"/>
+
+<xs:element name="consultarFacturaResponse" type="tns:consultarFacturaResponse"/>
+
+<xs:element name="consultarGrupoEstadoFacturasPorValores" type="tns:consultarGrupoEstadoFacturasPorValores"/>
+
+<xs:element name="consultarGrupoEstadoFacturasPorValoresResponse" type="tns:consultarGrupoEstadoFacturasPorValoresResponse"/>
+
+<xs:element name="consultarGrupoEstadosFactura" type="tns:consultarGrupoEstadosFactura"/>
+
+<xs:element name="consultarGrupoEstadosFacturaResponse" type="tns:consultarGrupoEstadosFacturaResponse"/>
+
+<xs:element name="enviarFactura" type="tns:enviarFactura"/>
+
+<xs:element name="enviarFacturaResponse" type="tns:enviarFacturaResponse"/>
+
+<xs:element name="version" type="tns:version"/>
+
+<xs:element name="versionResponse" type="tns:versionResponse"/>
+
+<xs:complexType name="consultarGrupoEstadoFacturasPorValores">
+<xs:sequence>
+<xs:element name="facturaTupla" type="tns:facturaTupla" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="facturaTupla">
+<xs:sequence>
+<xs:element name="nifcifProveedor" type="xs:string"/>
+<xs:element name="ejercicio" type="xs:int"/>
+<xs:element name="serie" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroFactura" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarGrupoEstadoFacturasPorValoresResponse">
+<xs:sequence>
+<xs:element name="resultadoEstadosFacturas" type="tns:respuestaConsultaGrupoFactura" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaConsultaGrupoFactura">
+<xs:sequence>
+<xs:element name="facturaTupla" type="tns:facturaTupla" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="respuestaEstadoFactura" type="tns:respuestaEstadoFactura" minOccurs="0"/>
+<xs:element name="error" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaEstadoFactura">
+<xs:sequence>
+<xs:element name="estadoFactura" type="tns:estadoFactura" minOccurs="0"/>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularFacturaPorValores">
+<xs:sequence>
+<xs:element name="nifcifProveedor" type="xs:string"/>
+<xs:element name="ejercicio" type="xs:int"/>
+<xs:element name="serie" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroFactura" type="xs:string"/>
+<xs:element name="motivoAnulacion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularFacturaPorValoresResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:FacturaExtendidaV2" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FacturaExtendidaV2">
+<xs:complexContent>
+<xs:extension base="tns:factura">
+<xs:sequence>
+<xs:element name="observacionesEstado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="factura">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="serie" type="xs:string" minOccurs="0"/>
+<xs:element name="numero" type="xs:string" minOccurs="0"/>
+<xs:element name="nifProveedor" type="xs:string" minOccurs="0"/>
+<xs:element name="nifCliente" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaFactura" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fechaFirma" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="moneda" type="xs:string" minOccurs="0"/>
+<xs:element name="total" type="xs:decimal" minOccurs="0"/>
+<xs:element name="liquido" type="xs:decimal" minOccurs="0"/>
+<xs:element name="versionFacturaE" type="xs:string" minOccurs="0"/>
+<xs:element xmlns:ns1="http://www.w3.org/2005/05/xmlmime" name="comprobanteRegistro" ns1:expectedContentTypes="application/octet-stream" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="fechaRegistro" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="estadoFactura" type="tns:estadoFactura" minOccurs="0"/>
+<xs:element name="observacionesAnulacion" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaAnulacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="oficinaContable" type="xs:string" minOccurs="0"/>
+<xs:element name="organoGestor" type="xs:string" minOccurs="0"/>
+<xs:element name="unidadTramitadora" type="xs:string" minOccurs="0"/>
+<xs:element name="organoProponente" type="xs:string" minOccurs="0"/>
+<xs:element name="claveTesoreria" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ServicioError">
+<xs:sequence>
+<xs:element name="mensajesError" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarFactura">
+<xs:sequence>
+<xs:element name="idFactura" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarFacturaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:FacturaExtendidaV2" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="enviarFactura">
+<xs:sequence>
+<xs:element xmlns:ns2="http://www.w3.org/2005/05/xmlmime" name="facturae" ns2:expectedContentTypes="application/octet-stream" type="xs:base64Binary"/>
+<xs:element name="anexos" type="tns:anexo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anexo">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string"/>
+<xs:element xmlns:ns3="http://www.w3.org/2005/05/xmlmime" name="contenido" ns3:expectedContentTypes="application/octet-stream" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="enviarFacturaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:FacturaExtendidaV2" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="version">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="versionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularFactura">
+<xs:sequence>
+<xs:element name="idFactura" type="xs:long"/>
+<xs:element name="motivoAnulacion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularFacturaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:FacturaExtendidaV2" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarFacturaPorValores">
+<xs:sequence>
+<xs:element name="nifcifProveedor" type="xs:string"/>
+<xs:element name="ejercicio" type="xs:int"/>
+<xs:element name="serie" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroFactura" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarFacturaPorValoresResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:FacturaExtendidaV2" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarEstadoMotivoFactura">
+<xs:sequence>
+<xs:element name="idFactura" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarEstadoMotivoFacturaResponse">
+<xs:sequence>
+<xs:element name="respuestaEstadoFactura" type="tns:respuestaEstadoFactura" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarGrupoEstadosFactura">
+<xs:sequence>
+<xs:element name="facturaId" type="xs:long" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarGrupoEstadosFacturaResponse">
+<xs:sequence>
+<xs:element name="resultadoEstadosFacturas" type="tns:respuestaConsultaGrupoFactura" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarEstadoMotivoFacturaPorValores">
+<xs:sequence>
+<xs:element name="nifcifProveedor" type="xs:string"/>
+<xs:element name="ejercicio" type="xs:int"/>
+<xs:element name="serie" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroFactura" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarEstadoMotivoFacturaPorValoresResponse">
+<xs:sequence>
+<xs:element name="respuestaEstadoFactura" type="tns:respuestaEstadoFactura" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="estadoFactura">
+<xs:restriction base="xs:string">
+<xs:enumeration value="REGISTRADA"/>
+<xs:enumeration value="REGISTRADA_RCF"/>
+<xs:enumeration value="CONTABILIZADA"/>
+<xs:enumeration value="PAGADA"/>
+<xs:enumeration value="ANULADA"/>
+<xs:enumeration value="RECHAZADA"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

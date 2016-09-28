@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Generaci� d'una factura en format "facturae"<BR>(versi� 3.2.1) </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruccions d'�s </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Aquesta finestra est� destinada a la generaci� d'esborranys i factures en format "facturae" (versi� 3.2.1). Per a aix� es mostren una s�rie de camps, alguns dels quals l'usuari ha d'emplenar obligat�riament (marcats amb un asterisc: *) i d'altres no editables (amb un fons de color blau) que s�n merament informatius. A continuaci� es descriuen detalladament com s'han d'omplir els diferents camps:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>A la secci� "Dades generals factura" es permet introduir dades de car�cter global com ara la data d'emissi�, la data i el lloc d'operaci� o el per�ode de facturaci�. A m�s, el sistema assignar�, de manera interna, un identificador �nic o "N�mero de factura" a la factura que s'est� generant.</P></LI>
+    <LI><P>A la secci� "Emissor" es pot seleccionar un emissor ja existent (d'entre tots els que pr�viament s'hagin emmagatzemat en l'aplicaci�) o introduir un nou emissor i guardar-lo a la base de dades.</P>
+     <UL TYPE="a">
+      <LI><P>En el primer cas, seleccioneu "Persona jur�dica" o "Persona f�sica" i, a continuaci�, desplegueu la pestanya situada a "Emissor". Finalment, premeu sobre l'usuari desitjat.</P></LI>
+      <LI><P>En el segon cas, premeu sobre el bot� "Nou usuari". Tot seguit, tots els camps de l'emissor es faran editables (fons de color blanc) perqu� pugueu introduir-hi les dades del nou usuari. L'�nic camp no editable ser� "Identificador", el valor del qual l'assignar� internament l'aplicaci�. Una vegada emplenats tots els camps obligatoris, premeu el bot� "Guardar": apareixer� un missatge informatiu sobre l'�xit / frac�s de l'operaci�.</P></LI>
+      <LI><P>Tamb� �s possible esborrar un emissor ja existent, sempre que no hagi estat utilitzat pr�viament en cap altra factura o esborrany: n'hi ha prou amb seleccionar-lo i pr�mer el bot� "Esborrar usuari". </UL>
+    </LI>
+    <LI><P>La secci� "Receptor" �s completament an�loga a l'anterior. En aquest cas, s'habilitar&aacute; la pestanya FACe, si s'ha seleccionat que es tracta d'un receptor d'aquest tipus.</P></LI>
+    <LI><P>A la secci� "Detall factura" s'introdueix el(els) concepte(s) que s'han de facturar (taula amb vora de color blau intens). Podeu afegir-hi o esborrar-hi detalls (o conceptes) amb l'ajut de les icones situades a aquest efecte al lateral dret.<BR>A m�s, podeu introduir o esborrar dades globals de la factura com descomptes, c�rrecs, documents adjunts, etc. al plaf� localitzat sota de la taula de conceptes, amb l'ajut dels botons "Afegir" i "Eliminar" situats al lateral dret.<BR>Finalment, a l'apartat "Totals" es mostren a manera informativa els valors num�rics dels diversos camps que formaran la factura.</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Una vegada emplenats tots els camps obligatoris, hi ha dues possibilitats:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Guardar esborrany: S'emmagatzemar� a la carpeta "Esborranys", en espera de ser modificat i/o firmat posteriorment. Un esborrany tamb� pot ser eliminat, si ho desitgeu.</P></LI>
+    <LI><P>signar: Apareixer� una finestra amb tots els certificats digitals disponibles. Despr�s de seleccionar-ne un, es generar� la corresponent factura amb signatura digital, que quedar� emmagatzemada a la carpeta "Emeses". Una factura emesa no podr� ser eliminada.</P></LI>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducci� de documents adjunts. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Si ho desitgeu podeu adjuntar un o diversos documents a la factura que generareu. Per a aix� premeu la pestanya "Adjunts" situada a la secci� "Detall de factura". En pr�mer el bot� "Afegir", es desplegar� una finestra emergent en la qual podreu seleccionar el tipus de fitxer a adjuntar (a "Format") i tamb� la ruta de la seva localitzaci� (per a aix� us pot ajudar el bot� "Examinar"). Heu d'introduir obligat�riament, a m�s, una descripci� sobre el document adjuntat.<BR>Finalment, podeu escollir incloure (o no) el fitxer adjuntat en l'xml de la factura. En cas afirmatiu, el document es codificar� a binari i passar� a formar part de l'xml; en cas contrari, nom�s es construir� una refer�ncia interna entre la factura generada i el fitxer adjuntat. A continuaci� premeu "Acceptar": el document seleccionat apareixer� a la taula d'adjunts.<BR>De la mateixa manera, tamb� podeu eliminar documents adjunts prement "Eliminar".</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducci� d'extensions. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>El bloc "Extensi�" requereix un coneixement b�sic de l'estructura interna d'un fitxer XML. El format esmentat es compon d'etiquetes que obren i tanquen blocs d'informaci� esquem�ticament. L'especificaci� de factura electr�nica defineix les etiquetes que poden apar�ixer als fitxers XML generats. <BR>Per agregar noves etiquetes, en primer lloc heu d'indicar a la finestra de "Configuraci�" el descriptor d'esquema (fitxer XSD) a estendre i l'espai de noms de les etiquetes que s'han d'afegir.<BR>Despr�s introdu�u el bloc d'informaci� que voleu inserir a la factura. Ho podeu fer de dues maneres: <UL TYPE="1">
+    <LI><P>Directament en el camp "Extensi�".</P></LI>
+    <LI><P>Prement al bot� "Ampliar": s'obrir� una finestra emergent on podr� inserir el bloc d'informaci�.</P></LI>
+  </UL>Posteriorment, premeu "Verificar" per comprovar si la informaci� introdu�da compleix l'esquema definit pel fitxer XSD seleccionat a "Configuraci�". <BR>Si el resultat �s positiu, apareixer� un missatge d'�xit i l'esmentada porci� de codi passar� a formar part de la factura. Si, al contrari, el resultat �s negatiu, es mostrar� un missatge d'advert�ncia (podeu pr�mer "Ampliar" per obtenir m�s detalls sobre l'error que s'ha produ�t) i la informaci� no s'introduir� a la factura. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>NOTA </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>Les extensions es poden introduir en tres llocs diferents de la factura: <UL TYPE="1">
+    <LI><P>A escala global de factura, des de la finestra de generaci� de factures.</P></LI>
+    <LI><P>A escala de documents adjunts, a la pestanya "Adjunts" situada a la secci� "Detall de factura" de la finestra de generaci� de factures.</P></LI>
+    <LI><P>A escala de concepte o l�nia de detall, des de la finestra de generaci� de conceptes.</P></LI>
+  </UL>
+  </P>
+  <BR>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

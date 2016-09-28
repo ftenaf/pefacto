@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Xeración dunha liña de detalle da factura </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instrucións de uso </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>A presente ventá está destinada á xeración dunha liña de detalle (ou concepto) da factura. Para iso, móstranse unha serie de campos; algúns deles deben ser cubertos obrigatoriamente polo usuario (os marcados cun asterisco: *) e outros son non-editables (os que teñen un fondo de cor azul), os cales son meramente informativos. A continuación, descríbense detalladamente como deben encherse os diferentes campos:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Na sección "Xeral" debe dar de alta o concepto que se vai facturar ou elixir entre algún dos xa existentes na aplicación se foron introducidos previamente. <UL TYPE="a">
+      <LI><P>No primeiro caso, debe introducir no campo "Descrición-id" unha descrición do concepto que se vai facturar que sexa o máis representativa posible. Ademais, debe establecer a cantidade (poñendo especial coidado nas unidades escollidas) e o importe unitario (en euros). Poderá comprobar que o campo "Importe total" (non-editable) aparece cuberto automaticamente: será o resultado de multiplicar os valores introducidos nos campos "Cantidade" e "Importe unitario".<BR>Opcionalmente, pode introducir descontos ou cargos sobre o Importe total empregando os botóns "Engadir" e "Eliminar": aparecerá unha ventá emerxente onde poderá introducir o importe do desconto (ou do cargo), así como unha descrición do motivo da súa aplicación. Unha vez introducidos, poderá observar que o valor do campo "Importe bruto" é o resultado de sumar os cargos e restar os descontos ao campo "Importe total".<BR>Finalmente, se o desexa pode introducir información adicional sobre o concepto facturado. Existen dúas opcións: <UL TYPE="i">
+          <LI><P>Introducir un texto explicativo no campo "Información adicional". </P></LI>
+          <LI><P>Introducir un fragmento de xml no campo "Extensión" (este procedemento explícase posteriormente con máis detalle no apartado "Introdución de extensións"). <P>Pódense definir novos tags (unidades lóxicas de información) non definidos no esquema de factura empregado, o cal lle permite estender o esquema de factura segundo as súas necesidades.</P>
+           </P></LI>
+         </UL>
+        </P></LI>
+      <LI><P>No segundo caso, despregue a pestana situada en "Descrición-ide" e elixa o concepto que desexa introducir. Deseguido, toda a información referida a este concepto se cargará na ventá da aplicación. O único campo obrigatorio que quedará baleiro á espera de ser cuberto polo usuario será "Cantidade".<BR>Unha vez enchido este campo, se o desexa, pode modificar algún dos datos do concepto ou introducir nova información. </LI></P>
+     </UL>
+     </P></LI>
+    <LI><P>Na sección "Impostos" pódese establecer o imposto (ou os impostos) e o seu correspondente tipo impositivo (ou porcentaxe) co que o concepto está gravado. Para iso empregue os botóns "Engadir" e "Eliminar" situados no lateral dereito para este fin.</P>
+    </LI>
+    <BR>
+    <LI><P>Na sección "Outros datos" pode introducir información como referencias de contrato, referencias de pedido ou o código de albarás</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Unha vez cubertos todos os campos obrigatorios, existen dúas posibilidades:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Premer no botón "Aceptar": Volverá á pantalla xeral de xeración de facturas e o concepto introducido quedará rexistrado na táboa correspondente.</P></LI>
+    <LI><P>Premer no botón "Cancelar": Volverá á pantalla xeral de xeración de facturas, perdendo toda a información introducida nesta ventá.</P></LI>
+   </UL>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introdución de extensións. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>O bloque "Extensión" require un coñecemento básico da estrutura interna dun ficheiro XML. Este formato componse de etiquetas que abren e pechan bloques de información esquematicamente. A especificación de factura electrónica define as etiquetas que poden aparecer nos ficheiros XML xerados. <BR>Para agregar novas etiquetas, en primeiro lugar debe indicar na ventá de "Configuración" o descritor de esquema (ficheiro XSD) que se vai estender e o espazo de nomes das etiquetas que se van engadir.<BR>Despois, introduza o bloque de información que desexa inserir na factura. Pode facelo de dúas maneiras: <UL TYPE="1">
+    <LI><P>Directamente no campo "Extensión".</P></LI>
+    <LI><P>Premendo no botón "Ampliar": abrirase unha ventá emerxente onde poderá inserir o bloque de información.</P></LI>
+  </UL>Posteriormente, prema en "Verificar" para comprobar se a información introducida cumpre o esquema definido polo ficheiro XSD seleccionado en "Configuración". <BR>Se o resultado é positivo, aparecerá unha mensaxe de éxito e a devandita porción de código pasará a formar parte da factura. Se, pola contra, o resultado é negativo, mostrarase unha mensaxe de advertencia (pode pulsar en "Ampliar" para obter máis detalles sobre o erro que se produciu) e non se introducirá a información na factura. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

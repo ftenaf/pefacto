@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="es.mityc.appfacturae.hibernate.auxClass.FACeSentResult" table="FACE_SENT_RESULT">
+	<id name="id" type="int" column="ID">
+		<generator class="increment"/>
+	</id>
+	<property name="invoiceNumber" column="NUMBER"/>
+	<property name="invoiceSeriesCode" column="SERIES_CODE"/>
+	<property name="date" not-null="true" column="DATE" type="XMLGregorianCalendar"/>
+	<property name="registerCode" column="REGISTER_CODE"/>
+	<property name="errorCode" column="ERROR_CODE"/>
+	<property name="errorDescription" column="ERROR"/>
+</class>
+   
+</hibernate-mapping>

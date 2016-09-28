@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  TD {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Generació d'una línia de detall de la factura </H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruccions d'ús </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Aquesta finestra està destinada a la generació d'una línia de detall (o concepte) de la factura. Per a això es mostren una sèrie de camps, alguns dels quals l'usuari ha d'emplenar obligatòriament (marcats amb un asterisc: *) i d'altres no editables (amb un fons de color blau) que són merament informatius. A continuació es descriuen detalladament com s'han d'omplir els diferents camps:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>A la secció "General" heu de donar d'alta el concepte a facturar o elegir entre algun dels que ja hi ha a l'aplicació, si es van introduir prèviament. <UL TYPE="a">
+      <LI><P>En el primer cas, heu d'introduir en el camp "Descripció-id" una descripció del concepte a facturar que sigui com més representativa millor. A més, heu d'establir la quantitat (posant una cura especial en les unitats escollides) i l'import unitari (en euros). Podreu comprovar que el camp "Import total" (no editable) s'omple automàticament: serà el resultat de multiplicar els valors introduïts en els camps "Quantitat" i "Import unitari".<BR>Opcionalment, podeu introduir descomptes o càrrecs sobre l'import total emprant els botons "Afegir" i "Eliminar": apareixerà una finestra emergent on podreu introduir l'import del descompte (o del càrrec) i també una descripció del motiu de la seva aplicació. Una vegada introduïts, podreu observar que el valor del camp "Import brut" és el resultat de sumar els càrrecs i restar els descomptes al camp "Import total".<BR>Finalment, si ho desitgeu podeu introduir informació addicional sobre el concepte facturat. Hi ha dues opcions: <UL TYPE="i">
+          <LI><P>Introduir un text explicatiu en el camp "Informació addicional". </P></LI>
+          <LI><P>Introduir un fragment d'xml en el camp "Extensió" (Aquest procediment s'explica posteriorment amb més deteniment a l'apartat "Introducció d'extensions"). <P>Es poden definir nous tags (unitats lògiques d'informació) no definits en l'esquema de factura emprat, la qual cosa us permet estendre l'esquema de factura segons les vostres necessitats.</P>
+           </P></LI>
+         </UL>
+        </P></LI>
+      <LI><P>En el segon cas, desplegueu la pestanya situada a "Descripció-id" i trieu el concepte que desitgeu introduir. Tot seguit, tota la informació referent a aquest concepte es carregarà a la finestra de l'aplicació. L'únic camp obligatori que quedarà buit esperant que l'usuari l'empleni serà "Quantitat".<BR>Una vegada s'hagi emplenat aquest camp, si ho desitgeu, podeu modificar alguna de les dades del concepte o introduir-hi nova informació. </LI></P>
+     </UL>
+     </P></LI>
+    <LI><P>A la secció "Impostos" es pot establir l'impost (o els impostos) i el seu corresponent tipus impositiu (o percentatge) amb què el concepte està gravat. Per a això empri els botons "Afegir" i "Eliminar" situats al lateral dret a aquest efecte.</P>
+    </LI>
+    <BR>
+    <LI><P>A la secció "Altres dades" podeu introduir diversa informació com referències de contracte, referències de comanda o el codi d'albarans</P></LI>
+   </UL>
+  </TD>
+ </TR>
+  <TR>
+  <TD COLSPAN="2">
+   <P>Una vegada emplenats tots els camps obligatoris, hi ha dues possibilitats:</P>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><P>Prémer el botó "Acceptar": Tornarà a la pantalla general de generació de factures i el concepte introduït quedarà registrat a la taula corresponent.</P></LI>
+    <LI><P>Prémer el botó "Cancel·lar": Tornarà a la pantalla general de generació de factures i es perdrà tota la informació introduïda a la finestra esmentada.</P></LI>
+   </UL>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point.jpg" HEIGHT="1" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducció d'extensions. </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+  <P>El bloc "Extensió" requereix un coneixement bàsic de l'estructura interna d'un fitxer XML. El format esmentat es compon d'etiquetes que obren i tanquen blocs d'informació esquemàticament. L'especificació de factura electrònica defineix les etiquetes que poden aparèixer en els fitxers XML generats. <BR>Per agregar noves etiquetes, en primer lloc heu d'indicar a la finestra de "Configuració" el descriptor d'esquema (fitxer XSD) a estendre i l'espai de noms de les etiquetes que s'ha d'afegir.<BR>Després introduïu el bloc d'informació que voleu inserir a la factura. Podeu fer-ho de dues maneres: <UL TYPE="1">
+    <LI><P>Directament en el camp "Extensió".</P></LI>
+    <LI><P>Prement al botó "Ampliar": s'obrirà una finestra emergent on podreu inserir el bloc d'informació.</P></LI>
+  </UL>Posteriorment, premeu "Verificar" per comprovar si la informació introduïda compleix l'esquema definit pel fitxer XSD seleccionat a "Configuració". <BR>Si el resultat és positiu, apareixerà un missatge d'èxit i l'esmentada porció de codi passarà a formar part de la factura. Si, al contrari, el resultat és negatiu, es mostrarà un missatge d'advertència (podeu prémer "Ampliar" per obtenir més detalls sobre l'error que s'ha produït) i la informació no s'introduirà a la factura. <BR>
+    </P>
+   <BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

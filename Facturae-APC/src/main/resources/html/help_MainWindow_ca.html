@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Pantalla principal </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducci� </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Aquesta �s la finestra principal des de la qual podreu accedir a totes les altres finestres, fer totes les accions implementades en l'aplicaci�, i tamb� veure les llistes de factures que hi ha a la base de dades, discriminades pel seu estat (a trav�s de l'arbre de navegaci� a la cantonada superior esquerra, �s a dir, si s�n factures emeses, enviades, rectificades...). Addicionalment, la llista de factures que es mostren a la taula central es pot discriminar, al seu torn, fent una cerca selectiva mitjan�ant el filtre de cerca que hi ha a la part superior de la pantalla.</P>
+   <P>En funci� de l'estat seleccionat en l'arbre de factures apareixeran, a la part inferior de la pantalla, les diferents accions disponibles per al tipus de factura, en qu� les m�s comunes s�n, la visualitzaci�, l'edici� i la signatura de factures. M�s endavant veurem detalladament les accions disponibles per a cada un dels estats de factura, la seva utilitat i el mode d'�s.</P>
+   <P>A la part esquerra de la pantalla es recullen els botons destinats a fer la resta d'accions disponibles no referides a una factura existent a la base de dades. Per ordre, aquestes s�n generar una nova factura que pertany a l'esquema seleccionat al men� desplegable que li segueix (per defecte, 3.1), introduir en la base de dades una factura externa pr�via triple validaci�, accedir a la configuraci� de l'aplicaci�, efectuar cerques de factures amb un filtre m�s restrictiu i complet que el d'aquesta pantalla, visualitzar el resum d'IVA de totes les factures, consultar l'hist�ric d'accions realitzades per l'aplicaci�, importar una base de dades externa o exportar l'actual a fitxer.</P>
+   <P>A la cantonada inferior esquerra de la finestra es mostra la seva imatge seleccionada a tall de logotip (modificable des de configuraci�) i una barra de progr�s que indica l'estat de les tasques a fer.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruccions d'�s </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>Arbre de factures</B><P>En l'arbre de factures es permet escollir entre el tipus de factures a mostrar segons el seu estat, que pot ser: "Esborrany" per a les factures encara no signades, "Emeses" per a les factures signades, "Enviades" per a les factures signades i enviades per correu electr�nic, i "Rebudes" per a les factures externes afegides a la base de dades mitjan�ant el di�leg "Rebre factura". Per a les factures "Rectificatives", �s a dir, les factures signades que han estat corregides, hi ha les mateixes categories, llevat de l'opci� de "Rebudes". Per canviar la navegaci� entre les unes i les altres simplement feu clic sobre l'opci� desitjada. Per expandir el node "Rectificatives" feu clic sobre el bot� " + " que hi ha a la seva esquerra. En canviar la selecci� a l'arbre, es llistaran totes les factures que estiguin en aquest estat, i es mostraran els botons relacionats.</P></LI>
+    <LI><B>Filtre de factures</B><P>El filtre de factures s'utilitza per delimitar les coincid�ncies trobades a la base de dades. Podeu filtrar la cerca indicant un emissor espec�fic de factura (es mostraran les factures fetes per l'emissor esmentat), i tamb� un receptor, i/o un concepte facturat en concret. Per fer una cerca de factures creades dins d'un per�ode de temps, marqueu l'opci� "Data". Es mostraran dos camps perqu� indiqueu l'inici i el final del per�ode de temps seleccionat (els dies seleccionats s'inclouen en el per�ode de cerca). Per fer que la cerca es faci efectiva, feu clic al bot� "Cerca" despr�s d'indicar els filtres a utilitzar. Es mostraran totes les factures que compleixin les condicions esmentades i que estiguin en l'estat seleccionat en l'arbre de factures.</P></LI>
+    <LI><B>Taula de factures</B><P>La taula de factures mostra les factures trobades a la base de dades, ordenades per ordre de creaci�. Les dades mostrades s�n: "Identificador", que �s la s�rie i el n�mero que identifiquen un�vocament la factura. La "Data", que indica la data de creaci� de la factura. L'"Emissor" mostra l'identificador de l'emissor de la factura. La columna "Receptor" mostra l'identificador per al client de l'emissor. El camp "Import" mostra l'import total de la factura, expressat en euros. I finalment, la "Versi�" mostra la versi� de l'esquema al qual la factura pertany. A continuaci� es mostren tres botons, un interogaci&oacute;n, un ull i una galleda d'escombraries, que es poden emprar per consultar l'estat de la factura en FACe, per mostrar la factura en diferents formats normalitzats, i per esborrar la factura (sense possibilitat de recuperaci�), respectivament.</P></LI>
+    <LI><B>Botons de factures</B><P>Els botons de factures aglutinen les diferents accions que es poden fer sobre una factura seleccionada (si no hi ha una factura seleccionada a la taula de factures, aquests botons no faran res). Els diferents estats de factura que hi ha determinen les opcions que s'hi poden efectuar. Aquestes s�n: <UL TYPE="1">
+     <LI>Visualitzar. - <P>Permet visualitzar el formulari de factura, per� sense la possibilitat de canviar cap dada.</P></LI>
+     <LI>Adjunts. - <P>Permet visualitzar una llista amb tots els fitxers adjunts que la factura t�, i tamb� afegir-hi adjunts nous (sense possibilitat d'incloure'ls a l'arxiu de factura) o eliminar-los.</P></LI>
+     <LI>Editar. - <P>Permet entrar dins del formulari emplenat de la factura com si es tract�s d'una factura nova, �s a dir, es pot canviar qualsevol de les seves dades, i posteriorment guardar o signar.</P></LI>
+     <LI>Signar. - <P>Inicia el proc�s de signatura de la factura mitjan�ant certificat digital per a signatura. S'obrir� un di�leg perqu� seleccioneu el certificat de signatura a utilitzar.</P></LI>
+     <LI>Veure XML. - <P>Obre un navegador que mostra el codi XML de la factura. �s a dir, es mostra l'interior de la factura, no una representaci� normalitzada (accessible mitjan�ant l'ull dins de la l�nia de factura).</P></LI>
+     <LI>Rectificar. - <P>�s an�leg al bot� "Editar", llevat perqu� quan guardeu o signeu es mostrar� un di�leg perqu� indiqueu les causes de rectificaci�. La nova factura generada passar� a trobar-se dins del node "Rectificativa" en l'arbre de factures.</P></LI>
+     <LI>Enviar. - <P>En pr�mer aquest bot�, es mostrar� un di�leg perqu� pugueu escriure un correu electr�nic amb la factura seleccionada com a fitxer adjunt.</P></LI>
+     <LI>Reexpedir. - <P>�s an�leg al bot� "Enviar".</P></LI>
+     <LI>Veure rectificacions. - <P>Mostra un di�leg amb les causes de rectificaci� de la factura rectificativa seleccionada.</P></LI>
+     </UL>
+    </P></LI>
+    <LI><B>Botons d'aplicaci�</B><P>Aquests botons permeten fer la resta d'accions implementades en l'aplicaci�. La seva utilitat est� explicada a l'apartat anomenat "Introducci�", que est� sobre aquestes l�nies. Per fer-les servir, simplement feu clic en l'opci� desitjada. Cada una de les opcions obrir� un di�leg propi que cont� la seva pr�pia ajuda contextual, per la qual cosa ens hi remetem per definir m�s profundament el seu funcionament intern.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

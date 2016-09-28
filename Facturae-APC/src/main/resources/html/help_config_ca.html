@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Configuraci� de l'aplicaci� </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introducci� </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>Aquest �s el di�leg de configuraci� en qu� podeu configurar par�metres de l'aplicaci� com ara les s�ries identificatives que cal emprar a les noves factures emeses i rectificatives i tamb� cada un dels seus n�meros de s�rie. Nom�s es poden indicar identificadors de factura que encara no estiguin a la base de dades.</p>
+   <P>Tamb� podeu indicar-hi la ruta a una imatge, que es mostrar� a la finestra principal de l'aplicaci� i que s'adjuntar� com a logotip d'empresa a les factures generades.</P>
+   <P>Al bloc titulat "Proxy", es permet indicar les dades necess�ries per atacar un servidor de correu SMTP que s'utilitzar� per a enviar les factures telem�ticament, i de manera opcional, les dades del servidor proxy a travessar per accedir a Internet des d'una intranet local.</P>  
+   <P>El bloc titulat "OCSP" us permet facilitar les dades de connexi� a un servidor OCSP, que serveix per a validar l'estat dels certificats de signatura utilitzats a la signatura electr�nica de les factures emeses contra una autoritat de validaci�.</P> 
+   <P>A continuaci�, al bloc titulat "Extensions", s'hi poden definir nous tags (unitats l�giques d'informaci�) no definits en l'esquema de factura utilitzat, la qual cosa us permet estendre l'esquema de factura segons les vostres necessitats.</P>
+   <P>Finalment, al bloc titulat "Idioma", es permet seleccionar l'idioma de presentaci� de l'aplicaci�. Heu de reiniciar l'aplicaci� per tal que el canvi d'idioma tingui efecte.</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instruccions d'�s </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>General</B><P>Nom�s es permet especificar el prefix dels identificadors de factures emeses (signades) i rectificatives (correccions o extensions d'una altra factura), que no poden ser iguals (en cas de ser-ho, es for�ar� un canvi). L'aplicaci� defineix la resta de prefixos. Per tal que els identificadors de factura siguin un�vocs, els n�meros a assignar no poden existir a la base de dades. En el moment que perdeu el focus, per mitj� de l'�s del tabulador o fent clic amb el ratol� en un altre lloc, l'aplicaci� far� una consulta a la base de dades, i en cas que l'identificador ja exist�s, es marcar� en vermell el camp, es netejar� el valor introdu�t i es mostrar� un missatge d'alerta. Els n�meros de factura s'aniran incrementant autom�ticament a mesura que es vagin creant noves factures.</P></LI>
+    <LI><B>Logotip</B><P>Utilitzeu el bot� "Examinar" (la icona mostra una carpeta), per seleccionar la imatge a utilitzar com a logotip. En pr�mer el bot�, s'obrir� un di�leg per a indicar la ruta de la imatge desitjada. L'aplicaci� permet seleccionar imatges amb format tiff, gif, jpg, png o bmp, imatge que s'escalar� a una mida de 305 x 121 p�xels.</P></LI>
+    <LI><B>Proxy</B><P>La secci� "Proxy" es compon de dues parts: la part esquerra, ocupada per a especificar les dades de connexi� al servidor de correu, i la part dreta, la finalitat de la qual �s proporcionar les dades de connexi� al proxy d'acc�s a Internet, en cas que n'hi hagu�s. Les dades de connexi� al servidor de correu SMTP es componen d'un URL (una adre�a d'Internet, p.ex. "www.ServidorSMTP.es") o una IP. El camp seg�ent �s el port de connexi�, seguit d'una casella de selecci� que habilita l'�s del protocol segur de connexi� SSL, i si requereix autenticaci� seguint l'esquema "Usuari-Contrasenya". L'�ltim camp s'utilitza per indicar el compte de correu, que pertany al servidor indicat, a utilitzar com a emissor del missatge. </BR>A la part dreta, utilitzada per a indicar l'�s de proxy, s'indica l'URL del servidor proxy (p.ex. "www.Proxy.es") o una IP, seguit del port d'atac, i an�logament, si s'empra l'esquema "Usuari-Contrasenya" per identificar els clients.</P></LI>
+    <LI><B>OCSP</B><P>En aquest bloc es proporcionen les dades d'una autoritat de validaci� per a assegurar que els certificats de signatura siguin v�lids. Es pot fer la validaci� en l'emissi� d'una factura (�s a dir, en signar-la) i/o a la recepci�. L'�ltim camp s'utilitza per a indicar l'adre�a d'Internet del servidor OCSP (p.ex. "www.ServidorOCSP.es", o una IP).</P></LI>
+    <LI><B>Extensions</B><P>El bloc "Extensions" requereix uns coneixements b�sics de l'estructura interna d'un fitxer XML. Aquest format es compon d'etiquetes que obren i tanquen blocs d'informaci� esquem�ticament. L'especificaci� de factura electr�nica defineix les etiquetes que poden apar�ixer als fitxers XML generats. Per agregar noves etiquetes, de primer heu d'indicar el descriptor d'esquema (�s un fitxer XSD) a estendre, a continuaci� heu d'indicar l'espai de noms de les etiquetes a afegir (p.ex. "http://www.w3.org/2000/09/xmldsig#"), i finalment, pr�mer el bot� " + ". Amb el bot� " - " eliminareu la l�nia seleccionada.</P>
+    <LI><B>Idioma</B><P>Per escollir un altre idioma d'entre els disponibles, feu clic sobre el bot� situat a la dreta i es mostrar� el di�leg. En cas que seleccioneu un idioma diferent de l'actual, es mostrar� un av�s perqu� reinicieu l'aplicaci�.</P>   
+    <LI><B>FACe</B><P>Utilitzeu el bot&oacute; de configuraci&oacute; face per accedir a la pantalla amb la informaci&oacute; sobre l'accés al servei en enviament de factures.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>

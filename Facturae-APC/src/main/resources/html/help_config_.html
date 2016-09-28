@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+	<META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+	<STYLE type="text/css">
+		H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+		P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+	</STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD BGCOLOR="#E6F0FA" COLSPAN="2">
+			<H1><B>Configuraci&oacute;n de la aplicaci&oacute;n</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Introducci&oacute;n</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<P>Este es el di&aacute;logo de configuraci&oacute;n en el cual usted puede configurar par&aacute;metros de la aplicaci&oacute;n tales como las series identificativas a emplear en las nuevas facturas emitidas y rectificativas, asi como cada uno de sus n&uacute;meros de serie. S&oacute;lo se permiten indicar identificadores de factura que no existan ya en la base de datos.</p>
+			<P>Tambi&eacute;n puede indicar la ruta a una im&aacute;gen, que se mostrar&aacute; en la ventana principal de la aplicaci&oacute;n y que ser&aacute; tomada como im&aacute;gen a adjuntar en las facturas generadas a modo de logotipo de empresa.</P>
+			<P>En el bloque llamado <I>"Proxy"</I>, se permite indicar los datos necesarios para atacar contra un servidor de correo SMTP que ser&aacute; empleado para enviar sus facturas telem&aacute;ticamente, y opcionalmente, los datos del servidor proxy a atravesar para acceder a internet desde una intranet local.</P>  
+			<P>El bloque llamado <I>"OCSP"</I> le permite proporcionar los datos de conexi&oacute;n a un servidor OCSP, que sirve para validar el estado de los certificados de firma empleados en la firma electr&oacute;nica de las facturas emitidas contra una autoridad de validaci&oacute;n.</P>	
+			<P>A continuaci&oacute;n, en el bloque llamado <I>"Extensiones"</I>, se pueden definir nuevos tags (unidades l&oacute;gicas de informaci&oacute;n) no definidos en el esquema de factura empleado, lo cual le permite extender el esquema de factura seg&uacute;n sus necesidades.</P>
+			<P>Finalmente, en el bloque titulado "Idioma", se permite seleccionar el idioma de presentaci&oacute;n de la aplicaci&oacute;n. Un cambio de idioma requiere un reinicio de la aplicaci&oacute;n para que tenga efecto.</P>
+			<BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<H1><B>Instrucciones de uso</B></H1>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<UL TYPE="1">
+				<LI><B>General</B><P>S&oacute;lo se permite especificar el prefijo de los identificadores de facturas emitidas (firmadas) y rectificativas (correciones o extensiones de otra factura), que no pueden ser iguales (en caso de serlo, se forzar&aacute; un cambio). El resto de prefijos son definidos por la aplicaci&oacute;n. Para que los identificadores de factura sean un&iacute;vocos, los n&uacute;meros a asignar no pueden existir ya en base de datos. En el momento en el que usted pierda el foco, mediante el uso del tabulador o haciendo clic con el rat&oacute;n en otro lugar, la aplicaci&oacute;n har&aacute; una consulta a la base de datos, y en caso de que el identificador ya existiese, se marcar&aacute; en rojo el campo, se limpiar&aacute; el valor introducido y se mostrar&aacute; un mensaje de alerta. Los n&uacute;meros de factura se ir&aacute;n incrementando autom&aacute;ticamente seg&uacute;n vayan cre&aacute;ndose nuevas facturas.</P></LI>
+				<LI><B>Logo</B><P>Utilice el bot&oacute;n examinar (su icono muestra una carpeta), para seleccionar la imagen a utilizar como logotipo. Al presionar dicho bot&oacute;n se abrir&aacute; un di&aacute;logo para que indique la ruta de la imagen deseada. La aplicaci&oacute;n permite seleccionar im&aacute;genes con formato tif, gif, jpg, png o bmp, im&aacute;gen que ser&aacute; escalada hasta un tama�o de 305 x 121 pixels.</P></LI>
+				<LI><B>Proxy</B><P>La secci&oacute;n <I>"Proxy"</I> se compone de dos partes, la parte izquierda, empleada para especificar los datos de conexi&oacute;n al servidor de correo, y la parte derecha, cuya finalidad es proporcionar los datos de conexi&oacute;n al proxy de acceso a internet, en caso de que lo hubiera. Los datos de conexi&oacute;n al servidor de correo SMTP se componen de una URL (una direcci&oacute;n de internet, p.e. "www.ServidorSMTP.es") &oacute; una IP. El siguiente campo es el puerto de conexi&oacute;n, seguido de un checkbox que habilita el uso del protocolo seguro de conexi&oacute;n SSL, y si el mismo requiere autenticaci&oacute;n siguiendo el esquema "Usuario-Contrase�a". El &uacute;ltimo campo es utilizado para indicar la cuenta de correo, perteneciente al servidor indicado, a utilizar como emisor del mensaje. </BR>En la parte derecha, empleada para indicar el uso de proxy, se indica la URL del servidor proxy (p.e. "www.Proxy.es") &oacute; una IP, seguido del puerto de ataque, y an&aacute;logamente, si se emplea el esquema "Usuario-Contrase�a" para identificar a los clientes.</P></LI>
+				<LI><B>OCSP</B><P>En este bloque se proporcionan los datos de una autoridad de validaci&oacute;n para chequear que los certificados de firma sean v&aacute;lidos. Se puede realizar dicha validaci&oacute;n en la emisi&oacute;n de una factura (es decir, al firmar) y/o en la recepci&oacute;n. El &uacute;ltimo campo es empleado para indicar la direcci&oacute;n de internet del servidor OCSP (p.e. "www.ServidorOCSP.es", o una IP).</P></LI>
+				<LI><B>Extensiones</B><P>El bloque "Extensiones" requiere un con&oacute;cimiento b&aacute;sico de la estructura interna de un fichero XML. Dicho formato se compone de etiquetas que abren y cierran bloques de informaci&oacute;n esquem&aacute;ticamente. La especificaci&oacute;n de factura electr&oacute;nica define las etiquetas que pueden aparecer en los ficheros XML generados. Para agregar nuevas etiquetas, primero debe indicar el descriptor de esquema (es un fichero XSD) a extender, a continuaci&oacute;n debe indicar el espacio de nombres de las etiquetas a a�adir (p.e. "http://www.w3.org/2000/09/xmldsig#"), y finalmente, pulsar el bot&oacute;n "+". Con el bot&oacute;n "-" se eliminar&aacute; la l&iacute;nea seleccionada.</P>
+				<LI><B>Idioma</B><P>Para escoger otro idioma entre los que hay disponibles, haga clic sobre el bot&oacute;n situado a la derecha y se mostrar&aacute; el di&aacute;ogo. En caso de que usted seleccione un idioma distinto del actual, se mostrar&aacute; un aviso para que reinicie la aplicaci&oacute;n.</P>
+				<LI><B>FACe</B><P>Utilice el bot&oacute;n de configuraci&oacute;n FACe para acceder a la pantalla con la informaci&oacute;n sobre el acceso al servicio en env&iacute;o de facturas.</P>   
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2">
+			<IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+			<BR><BR>
+		</TD>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

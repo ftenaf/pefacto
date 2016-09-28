@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+ <META CONTENT="text/html" http-equiv="content-type" charset="iso-8859-1"/>
+ <STYLE type="text/css">
+  H1 {FONT-SIZE: 11pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+  P {FONT-SIZE: 10pt; COLOR:#135B87 ;FONT-FAMILY: arial,helvetica}
+ </STYLE>
+</HEAD>
+<BODY BACKGROUND="bgimage.jpg">
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
+ <TR>
+  <TD BGCOLOR="#E6F0FA" COLSPAN="2">
+   <H1><B>Main screen </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Introduction </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <P>This is the main window, from which you can access all the other windows and carry out all the actions implemented in the application. You can also see the lists of invoices in the database and distinguish them by status (by means of the browser tree in the upper left corner, that is, if they are invoices issued, sent, corrected, etc.). In addition, the list of invoices displayed in the central table may be discriminated in turn by carrying out a selective search using the search filter in the upper part of the screen.</P>
+   <P>Depending on the status selected in the invoice tree, the different actions available for the type of invoice will be displayed in the lower part of the screen; the most common are displaying, editing and signing invoices. We shall presently see in detail the actions available for each invoice status, as well as their use and method of use.</P>
+   <P>The left hand side of the screen contains the buttons designed to carry out the rest of the actions available which are not related to invoices in the database. In order, these are generating a new invoice belonging to the schema selected in the dropdown menu following it (3.1, by default), entering an external invoice upon triple validation in the database, accessing the application configuration, carrying out searches of invoices with a more restrictive and complete filter than that of this screen, viewing the VAT summary in all invoices, viewing the history of actions performed by the application, importing an external database or exporting the current one to a file.</P>
+   <P>In the lower left hand corner of the window, the image selected as a logo is displayed (modifiable from configuration) and a progress bar indicating the status of the tasks to be carried out .</P>
+   <BR>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <H1><B>Instructions for use </B></H1>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <UL TYPE="1">
+    <LI><B>Invoice tree</B><P>The invoice tree enables you to choose the type of invoices to show according to their status. The types may be: "Draft" for unsigned invoices, "Issued" for signed invoices, "Sent" for invoices signed and sent by e-mail, and "Received" for external invoices added to the database by means of the "Receive invoice" dialogue. The same categories exist for "Corrected invoices", that is, signed invoices that have been corrected, except for the "Received" option. To browse from one to the other, simply click on the option required. To expand the "Corrected invoice" node, click on "+", on the left. When the selection in the tree is changed, all the invoices with that status will be listed and the related buttons will be displayed.</P></LI>
+    <LI><B>Invoice filter</B><P>The invoice filter is used to narrow down the coincidences found in the database. You can filter the search by indicating a specific invoice issuer (the invoices made by this issuer will be displayed), and a recipient, and/or a specific invoiced item. To perform a search of invoices created within a period of time, tick the "Date" option. Two fields will be shown for you to indicate the start and end of the period of time selected (the days selected are included in the search period). To perform the search, click on "Search" after indicating the filters to be used. All the invoices that meet the criteria set and which have the status selected in the invoice tree will be shown.</P></LI>
+    <LI><B>Invoice table</B><P>The invoice table shows the invoices found in the database, in order of creation. The details shown are: "Identifier", which is the series and number that univocally identify the invoice. The "Date", which indicates the date the invoice was created. The "Issuer" shows the identifier of the invoice issuer. The column "Recipient" shows the identifier for the issuer's client. The field "Amount" shows the total amount of the invoice, expressed in euros. And finally, the "Version" shows the version of the schema to which the invoice belongs. Three buttons, a question mark, an eye and a rubbish bin are then shown; they may be used to check the status of the invoice at FACe, to show the invoice in different normalised formats and to delete the invoice (it cannot be recovered) respectively.</P></LI>
+    <LI><B>Invoice buttons</B><P>The invoice buttons encompass the different actions that can be performed on a selected invoice (if there is not an invoice selected in the invoice table, these buttons will not perform any function). The different invoice statuses existing determine the actions that can be performed on them. Namely: <UL TYPE="1">
+     <LI>Display.- <P>Enables the invoice form to be viewed, but without the option of changing any detail.</P></LI>
+     <LI>Attachments.- <P>Enables a list of all the invoice's attached files to be viewed, and new attachments to be added (without the possibility of including them in the invoice file) or deleted.</P></LI>
+     <LI>Edit.- <P>Enables you to enter the completed invoice form as if it were a new invoice, that is, any details may be changed and the invoice subsequently saved or signed.</P></LI>
+     <LI>Sign.- <P>It initiates the invoice signing process by means of a digital signature certificate. A dialogue will open for you to select the signature certificate to use.</P></LI>
+     <LI>View XML.- <P>A browser opens showing the XML code of the invoice. That is, the interior of the invoice is shown, not a normalised representation of the latter (accessible via the eye in the invoice line).</P></LI>
+     <LI>Correct.- <P>It is analogous to the "Edit" button, except that when saving or signing a dialogue will be shown for you to indicate the reasons for the correction. The new invoice generated will be located in the "Corrected invoice" node in the invoice tree.</P></LI>
+     <LI>Send.- <P>When you click on this button, a dialogue will be shown for you to write an e-mail with the invoice selected as an attached file.</P></LI>
+     <LI>Re-send.- <P>It is analogous to the "Send" button.</P></LI>
+     <LI>View corrections.- <P>A dialogue is shown with the reasons for correction for the corrected invoice selected.</P></LI>
+     </UL>
+    </P></LI>
+    <LI><B>Application buttons</B><P>These buttons enable the remaining actions implemented in the application to be performed. Their use is explained in the section above titled "Introduction". To use them, simply click on the required option. Each option will open its own dialogue containing its own contextual help. We therefore refer you there as that is where their internal workings are more thoroughly explained.</P>
+   </UL>
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN="2">
+   <IMG SRC="point2.jpg" HEIGHT="3" WIDTH="325" BORDER="0">
+   <BR><BR>
+  </TD>
+ </TR>
+</TABLE>
+</BODY>
+</HTML>
